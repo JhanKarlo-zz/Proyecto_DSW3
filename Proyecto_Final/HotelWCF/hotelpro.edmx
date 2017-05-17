@@ -1,0 +1,789 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="hotelproModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id_Cliente" />
+          </Key>
+          <Property Name="id_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Apellido_Paterno" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Apellido_Materno" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Fecha_Nacimiento" Type="date" />
+          <Property Name="NroDocumento" Type="varchar" MaxLength="14" />
+          <Property Name="Correo" Type="varchar" MaxLength="100" />
+          <Property Name="Telefono_Casa" Type="varchar" MaxLength="15" />
+          <Property Name="Telefono_Celular" Type="varchar" MaxLength="15" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" />
+          <Property Name="id_Ubigeo" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="id_Tipo_Cliente" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Consumo">
+          <Key>
+            <PropertyRef Name="id_Consumo" />
+          </Key>
+          <Property Name="id_Consumo" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Estado_Consumo" Type="tinyint" Nullable="false" />
+          <Property Name="id_Producto" Type="smallint" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="cantidad" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Documento">
+          <Key>
+            <PropertyRef Name="id_Serie" />
+            <PropertyRef Name="id_Correlativo" />
+          </Key>
+          <Property Name="id_Serie" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="id_Correlativo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="id_Reserva" Type="smallint" Nullable="false" />
+          <Property Name="id_Estado_Documento" Type="tinyint" Nullable="false" />
+          <Property Name="id_Tipo_Documento" Type="tinyint" Nullable="false" />
+          <Property Name="Valor_Venta_Total" Type="money" Nullable="false" />
+          <Property Name="Valor_Igv_Total" Type="money" Nullable="false" />
+          <Property Name="Importe_Total" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Documento_Detalle">
+          <Key>
+            <PropertyRef Name="id_Serie" />
+            <PropertyRef Name="id_Correlativo" />
+            <PropertyRef Name="Nro_Item" />
+          </Key>
+          <Property Name="id_Serie" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="id_Correlativo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nro_Item" Type="tinyint" Nullable="false" />
+          <Property Name="id_Producto" Type="smallint" Nullable="false" />
+          <Property Name="Valor_Venta" Type="money" Nullable="false" />
+          <Property Name="Igv" Type="money" Nullable="false" />
+          <Property Name="Sub_Total" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Habitacion">
+          <Key>
+            <PropertyRef Name="id_Habitacion" />
+          </Key>
+          <Property Name="id_Habitacion" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Sede" Type="tinyint" Nullable="false" />
+          <Property Name="id_Estado_Habitacion" Type="tinyint" Nullable="false" />
+          <Property Name="id_Tipo_Habitacion" Type="tinyint" />
+          <Property Name="Piso" Type="tinyint" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="flag_Fecha_Especial" Type="bit" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Precio_Especial">
+          <Key>
+            <PropertyRef Name="id_Precio_Especial" />
+          </Key>
+          <Property Name="id_Precio_Especial" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Habitacion" Type="smallint" Nullable="false" />
+          <Property Name="Fecha_Inicio" Type="date" />
+          <Property Name="Fecha_Fin" Type="date" />
+          <Property Name="Porcentaje" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="id_Producto" />
+          </Key>
+          <Property Name="id_Producto" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="id_Reserva" />
+          </Key>
+          <Property Name="id_Reserva" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Cliente" Type="int" Nullable="false" />
+          <Property Name="id_Habitacion" Type="smallint" Nullable="false" />
+          <Property Name="id_Estado_Reserva" Type="tinyint" Nullable="false" />
+          <Property Name="id_Consumo" Type="smallint" />
+          <Property Name="Fecha_Registro" Type="date" Nullable="false" />
+          <Property Name="Fecha_Ingreso" Type="date" Nullable="false" />
+          <Property Name="Fecha_Salida" Type="date" Nullable="false" />
+          <Property Name="Fecha_Inicio_Reserva" Type="date" Nullable="false" />
+          <Property Name="Fecha_Fin_Reserva" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="id_Sede" />
+          </Key>
+          <Property Name="id_Sede" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_Ubigeo" Type="char" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ubigeo">
+          <Key>
+            <PropertyRef Name="id_Ubigeo" />
+          </Key>
+          <Property Name="id_Ubigeo" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Departamento" Type="varchar" MaxLength="100" />
+          <Property Name="Provincia" Type="varchar" MaxLength="100" />
+          <Property Name="Distrito" Type="varchar" MaxLength="100" />
+          <Property Name="idContinente" Type="char" MaxLength="2" />
+          <Property Name="idPais" Type="char" MaxLength="2" />
+          <Property Name="idDepartamento" Type="char" MaxLength="2" />
+          <Property Name="idProvincia" Type="char" MaxLength="2" />
+          <Property Name="idDistrito" Type="char" MaxLength="2" />
+        </EntityType>
+        <Association Name="FK__Cliente__id_Ubig__6D0D32F4">
+          <End Role="Ubigeo" Type="Self.Ubigeo" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubigeo">
+              <PropertyRef Name="id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consumo__id_Prod__6E01572D">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Consumo" Type="Self.Consumo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="id_Producto" />
+            </Principal>
+            <Dependent Role="Consumo">
+              <PropertyRef Name="id_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Documento__id_Re__03F0984C">
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
+          <End Role="Documento" Type="Self.Documento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserva">
+              <PropertyRef Name="id_Reserva" />
+            </Principal>
+            <Dependent Role="Documento">
+              <PropertyRef Name="id_Reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Documento_Detall__73BA3083">
+          <End Role="Documento" Type="Self.Documento" Multiplicity="1" />
+          <End Role="Documento_Detalle" Type="Self.Documento_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documento">
+              <PropertyRef Name="id_Serie" />
+              <PropertyRef Name="id_Correlativo" />
+            </Principal>
+            <Dependent Role="Documento_Detalle">
+              <PropertyRef Name="id_Serie" />
+              <PropertyRef Name="id_Correlativo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Habitacio__id_Se__6FE99F9F">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="id_Sede" />
+            </Principal>
+            <Dependent Role="Habitacion">
+              <PropertyRef Name="id_Sede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Precio_Es__id_Ha__6EF57B66">
+          <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="1" />
+          <End Role="Precio_Especial" Type="Self.Precio_Especial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitacion">
+              <PropertyRef Name="id_Habitacion" />
+            </Principal>
+            <Dependent Role="Precio_Especial">
+              <PropertyRef Name="id_Habitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_Clie__70DDC3D8">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_Cliente" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_Cons__72C60C4A">
+          <End Role="Consumo" Type="Self.Consumo" Multiplicity="0..1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consumo">
+              <PropertyRef Name="id_Consumo" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="id_Consumo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_Habi__71D1E811">
+          <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitacion">
+              <PropertyRef Name="id_Habitacion" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="id_Habitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sede__id_Ubigeo__6C190EBB">
+          <End Role="Ubigeo" Type="Self.Ubigeo" Multiplicity="1" />
+          <End Role="Sede" Type="Self.Sede" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubigeo">
+              <PropertyRef Name="id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Sede">
+              <PropertyRef Name="id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="hotelproModelStoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consumo" EntityType="Self.Consumo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documento" EntityType="Self.Documento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documento_Detalle" EntityType="Self.Documento_Detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Habitacion" EntityType="Self.Habitacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Precio_Especial" EntityType="Self.Precio_Especial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sede" EntityType="Self.Sede" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ubigeo" EntityType="Self.Ubigeo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cliente__id_Ubig__6D0D32F4" Association="Self.FK__Cliente__id_Ubig__6D0D32F4">
+            <End Role="Ubigeo" EntitySet="Ubigeo" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consumo__id_Prod__6E01572D" Association="Self.FK__Consumo__id_Prod__6E01572D">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Consumo" EntitySet="Consumo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Documento__id_Re__03F0984C" Association="Self.FK__Documento__id_Re__03F0984C">
+            <End Role="Reserva" EntitySet="Reserva" />
+            <End Role="Documento" EntitySet="Documento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Documento_Detall__73BA3083" Association="Self.FK__Documento_Detall__73BA3083">
+            <End Role="Documento" EntitySet="Documento" />
+            <End Role="Documento_Detalle" EntitySet="Documento_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Habitacio__id_Se__6FE99F9F" Association="Self.FK__Habitacio__id_Se__6FE99F9F">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Habitacion" EntitySet="Habitacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Precio_Es__id_Ha__6EF57B66" Association="Self.FK__Precio_Es__id_Ha__6EF57B66">
+            <End Role="Habitacion" EntitySet="Habitacion" />
+            <End Role="Precio_Especial" EntitySet="Precio_Especial" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_Clie__70DDC3D8" Association="Self.FK__Reserva__id_Clie__70DDC3D8">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_Cons__72C60C4A" Association="Self.FK__Reserva__id_Cons__72C60C4A">
+            <End Role="Consumo" EntitySet="Consumo" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_Habi__71D1E811" Association="Self.FK__Reserva__id_Habi__71D1E811">
+            <End Role="Habitacion" EntitySet="Habitacion" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sede__id_Ubigeo__6C190EBB" Association="Self.FK__Sede__id_Ubigeo__6C190EBB">
+            <End Role="Ubigeo" EntitySet="Ubigeo" />
+            <End Role="Sede" EntitySet="Sede" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hotelproModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id_Cliente" />
+          </Key>
+          <Property Name="id_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Apellido_Paterno" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido_Materno" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Nacimiento" Type="DateTime" Precision="0" />
+          <Property Name="NroDocumento" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono_Casa" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono_Celular" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_Ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="id_Tipo_Cliente" Type="Byte" />
+          <NavigationProperty Name="Ubigeo" Relationship="Self.FK__Cliente__id_Ubig__6D0D32F4" FromRole="Cliente" ToRole="Ubigeo" />
+          <NavigationProperty Name="Reserva" Relationship="Self.FK__Reserva__id_Clie__70DDC3D8" FromRole="Cliente" ToRole="Reserva" />
+        </EntityType>
+        <EntityType Name="Consumo">
+          <Key>
+            <PropertyRef Name="id_Consumo" />
+          </Key>
+          <Property Name="id_Consumo" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Estado_Consumo" Type="Byte" Nullable="false" />
+          <Property Name="id_Producto" Type="Int16" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cantidad" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Consumo__id_Prod__6E01572D" FromRole="Consumo" ToRole="Producto" />
+          <NavigationProperty Name="Reserva" Relationship="Self.FK__Reserva__id_Cons__72C60C4A" FromRole="Consumo" ToRole="Reserva" />
+        </EntityType>
+        <EntityType Name="Documento">
+          <Key>
+            <PropertyRef Name="id_Serie" />
+            <PropertyRef Name="id_Correlativo" />
+          </Key>
+          <Property Name="id_Serie" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Correlativo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Reserva" Type="Int16" Nullable="false" />
+          <Property Name="id_Estado_Documento" Type="Byte" Nullable="false" />
+          <Property Name="id_Tipo_Documento" Type="Byte" Nullable="false" />
+          <Property Name="Valor_Venta_Total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Valor_Igv_Total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Importe_Total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Reserva" Relationship="Self.FK__Documento__id_Re__03F0984C" FromRole="Documento" ToRole="Reserva" />
+          <NavigationProperty Name="Documento_Detalle" Relationship="Self.FK__Documento_Detall__73BA3083" FromRole="Documento" ToRole="Documento_Detalle" />
+        </EntityType>
+        <EntityType Name="Documento_Detalle">
+          <Key>
+            <PropertyRef Name="id_Serie" />
+            <PropertyRef Name="id_Correlativo" />
+            <PropertyRef Name="Nro_Item" />
+          </Key>
+          <Property Name="id_Serie" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Correlativo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nro_Item" Type="Byte" Nullable="false" />
+          <Property Name="id_Producto" Type="Int16" Nullable="false" />
+          <Property Name="Valor_Venta" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Igv" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Sub_Total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Documento" Relationship="Self.FK__Documento_Detall__73BA3083" FromRole="Documento_Detalle" ToRole="Documento" />
+        </EntityType>
+        <EntityType Name="Habitacion">
+          <Key>
+            <PropertyRef Name="id_Habitacion" />
+          </Key>
+          <Property Name="id_Habitacion" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Sede" Type="Byte" Nullable="false" />
+          <Property Name="id_Estado_Habitacion" Type="Byte" Nullable="false" />
+          <Property Name="id_Tipo_Habitacion" Type="Byte" />
+          <Property Name="Piso" Type="Byte" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="flag_Fecha_Especial" Type="Boolean" />
+          <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Sede" Relationship="Self.FK__Habitacio__id_Se__6FE99F9F" FromRole="Habitacion" ToRole="Sede" />
+          <NavigationProperty Name="Precio_Especial" Relationship="Self.FK__Precio_Es__id_Ha__6EF57B66" FromRole="Habitacion" ToRole="Precio_Especial" />
+          <NavigationProperty Name="Reserva" Relationship="Self.FK__Reserva__id_Habi__71D1E811" FromRole="Habitacion" ToRole="Reserva" />
+        </EntityType>
+        <EntityType Name="Precio_Especial">
+          <Key>
+            <PropertyRef Name="id_Precio_Especial" />
+          </Key>
+          <Property Name="id_Precio_Especial" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Habitacion" Type="Int16" Nullable="false" />
+          <Property Name="Fecha_Inicio" Type="DateTime" Precision="0" />
+          <Property Name="Fecha_Fin" Type="DateTime" Precision="0" />
+          <Property Name="Porcentaje" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Habitacion" Relationship="Self.FK__Precio_Es__id_Ha__6EF57B66" FromRole="Precio_Especial" ToRole="Habitacion" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="id_Producto" />
+          </Key>
+          <Property Name="id_Producto" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Consumo" Relationship="Self.FK__Consumo__id_Prod__6E01572D" FromRole="Producto" ToRole="Consumo" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="id_Reserva" />
+          </Key>
+          <Property Name="id_Reserva" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="id_Habitacion" Type="Int16" Nullable="false" />
+          <Property Name="id_Estado_Reserva" Type="Byte" Nullable="false" />
+          <Property Name="id_Consumo" Type="Int16" />
+          <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fecha_Salida" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fecha_Inicio_Reserva" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fecha_Fin_Reserva" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Reserva__id_Clie__70DDC3D8" FromRole="Reserva" ToRole="Cliente" />
+          <NavigationProperty Name="Consumo" Relationship="Self.FK__Reserva__id_Cons__72C60C4A" FromRole="Reserva" ToRole="Consumo" />
+          <NavigationProperty Name="Documento" Relationship="Self.FK__Documento__id_Re__03F0984C" FromRole="Reserva" ToRole="Documento" />
+          <NavigationProperty Name="Habitacion" Relationship="Self.FK__Reserva__id_Habi__71D1E811" FromRole="Reserva" ToRole="Habitacion" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="id_Sede" />
+          </Key>
+          <Property Name="id_Sede" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Habitacion" Relationship="Self.FK__Habitacio__id_Se__6FE99F9F" FromRole="Sede" ToRole="Habitacion" />
+          <NavigationProperty Name="Ubigeo" Relationship="Self.FK__Sede__id_Ubigeo__6C190EBB" FromRole="Sede" ToRole="Ubigeo" />
+        </EntityType>
+        <EntityType Name="Ubigeo">
+          <Key>
+            <PropertyRef Name="id_Ubigeo" />
+          </Key>
+          <Property Name="id_Ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Departamento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Distrito" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="idContinente" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="idPais" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="idDepartamento" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="idProvincia" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="idDistrito" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__id_Ubig__6D0D32F4" FromRole="Ubigeo" ToRole="Cliente" />
+          <NavigationProperty Name="Sede" Relationship="Self.FK__Sede__id_Ubigeo__6C190EBB" FromRole="Ubigeo" ToRole="Sede" />
+        </EntityType>
+        <Association Name="FK__Cliente__id_Ubig__6D0D32F4">
+          <End Role="Ubigeo" Type="Self.Ubigeo" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubigeo">
+              <PropertyRef Name="id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_Clie__70DDC3D8">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_Cliente" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consumo__id_Prod__6E01572D">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Consumo" Type="Self.Consumo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="id_Producto" />
+            </Principal>
+            <Dependent Role="Consumo">
+              <PropertyRef Name="id_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_Cons__72C60C4A">
+          <End Role="Consumo" Type="Self.Consumo" Multiplicity="0..1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consumo">
+              <PropertyRef Name="id_Consumo" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="id_Consumo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Documento__id_Re__03F0984C">
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
+          <End Role="Documento" Type="Self.Documento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserva">
+              <PropertyRef Name="id_Reserva" />
+            </Principal>
+            <Dependent Role="Documento">
+              <PropertyRef Name="id_Reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Documento_Detall__73BA3083">
+          <End Role="Documento" Type="Self.Documento" Multiplicity="1" />
+          <End Role="Documento_Detalle" Type="Self.Documento_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documento">
+              <PropertyRef Name="id_Serie" />
+              <PropertyRef Name="id_Correlativo" />
+            </Principal>
+            <Dependent Role="Documento_Detalle">
+              <PropertyRef Name="id_Serie" />
+              <PropertyRef Name="id_Correlativo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Habitacio__id_Se__6FE99F9F">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="id_Sede" />
+            </Principal>
+            <Dependent Role="Habitacion">
+              <PropertyRef Name="id_Sede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Precio_Es__id_Ha__6EF57B66">
+          <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="1" />
+          <End Role="Precio_Especial" Type="Self.Precio_Especial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitacion">
+              <PropertyRef Name="id_Habitacion" />
+            </Principal>
+            <Dependent Role="Precio_Especial">
+              <PropertyRef Name="id_Habitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_Habi__71D1E811">
+          <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitacion">
+              <PropertyRef Name="id_Habitacion" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="id_Habitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sede__id_Ubigeo__6C190EBB">
+          <End Role="Ubigeo" Type="Self.Ubigeo" Multiplicity="1" />
+          <End Role="Sede" Type="Self.Sede" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubigeo">
+              <PropertyRef Name="id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Sede">
+              <PropertyRef Name="id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="hotelproEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Consumo" EntityType="Self.Consumo" />
+          <EntitySet Name="Documento" EntityType="Self.Documento" />
+          <EntitySet Name="Documento_Detalle" EntityType="Self.Documento_Detalle" />
+          <EntitySet Name="Habitacion" EntityType="Self.Habitacion" />
+          <EntitySet Name="Precio_Especial" EntityType="Self.Precio_Especial" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="Reserva" EntityType="Self.Reserva" />
+          <EntitySet Name="Sede" EntityType="Self.Sede" />
+          <EntitySet Name="Ubigeo" EntityType="Self.Ubigeo" />
+          <AssociationSet Name="FK__Cliente__id_Ubig__6D0D32F4" Association="Self.FK__Cliente__id_Ubig__6D0D32F4">
+            <End Role="Ubigeo" EntitySet="Ubigeo" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_Clie__70DDC3D8" Association="Self.FK__Reserva__id_Clie__70DDC3D8">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consumo__id_Prod__6E01572D" Association="Self.FK__Consumo__id_Prod__6E01572D">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Consumo" EntitySet="Consumo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_Cons__72C60C4A" Association="Self.FK__Reserva__id_Cons__72C60C4A">
+            <End Role="Consumo" EntitySet="Consumo" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Documento__id_Re__03F0984C" Association="Self.FK__Documento__id_Re__03F0984C">
+            <End Role="Reserva" EntitySet="Reserva" />
+            <End Role="Documento" EntitySet="Documento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Documento_Detall__73BA3083" Association="Self.FK__Documento_Detall__73BA3083">
+            <End Role="Documento" EntitySet="Documento" />
+            <End Role="Documento_Detalle" EntitySet="Documento_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Habitacio__id_Se__6FE99F9F" Association="Self.FK__Habitacio__id_Se__6FE99F9F">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Habitacion" EntitySet="Habitacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Precio_Es__id_Ha__6EF57B66" Association="Self.FK__Precio_Es__id_Ha__6EF57B66">
+            <End Role="Habitacion" EntitySet="Habitacion" />
+            <End Role="Precio_Especial" EntitySet="Precio_Especial" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_Habi__71D1E811" Association="Self.FK__Reserva__id_Habi__71D1E811">
+            <End Role="Habitacion" EntitySet="Habitacion" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sede__id_Ubigeo__6C190EBB" Association="Self.FK__Sede__id_Ubigeo__6C190EBB">
+            <End Role="Ubigeo" EntitySet="Ubigeo" />
+            <End Role="Sede" EntitySet="Sede" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="hotelproModelStoreContainer" CdmEntityContainer="hotelproEntities">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="hotelproModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
+                <ScalarProperty Name="Apellido_Paterno" ColumnName="Apellido_Paterno" />
+                <ScalarProperty Name="Apellido_Materno" ColumnName="Apellido_Materno" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+                <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono_Casa" ColumnName="Telefono_Casa" />
+                <ScalarProperty Name="Telefono_Celular" ColumnName="Telefono_Celular" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="id_Ubigeo" ColumnName="id_Ubigeo" />
+                <ScalarProperty Name="id_Tipo_Cliente" ColumnName="id_Tipo_Cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consumo">
+            <EntityTypeMapping TypeName="hotelproModel.Consumo">
+              <MappingFragment StoreEntitySet="Consumo">
+                <ScalarProperty Name="id_Consumo" ColumnName="id_Consumo" />
+                <ScalarProperty Name="id_Estado_Consumo" ColumnName="id_Estado_Consumo" />
+                <ScalarProperty Name="id_Producto" ColumnName="id_Producto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documento">
+            <EntityTypeMapping TypeName="hotelproModel.Documento">
+              <MappingFragment StoreEntitySet="Documento">
+                <ScalarProperty Name="id_Serie" ColumnName="id_Serie" />
+                <ScalarProperty Name="id_Correlativo" ColumnName="id_Correlativo" />
+                <ScalarProperty Name="id_Reserva" ColumnName="id_Reserva" />
+                <ScalarProperty Name="id_Estado_Documento" ColumnName="id_Estado_Documento" />
+                <ScalarProperty Name="id_Tipo_Documento" ColumnName="id_Tipo_Documento" />
+                <ScalarProperty Name="Valor_Venta_Total" ColumnName="Valor_Venta_Total" />
+                <ScalarProperty Name="Valor_Igv_Total" ColumnName="Valor_Igv_Total" />
+                <ScalarProperty Name="Importe_Total" ColumnName="Importe_Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documento_Detalle">
+            <EntityTypeMapping TypeName="hotelproModel.Documento_Detalle">
+              <MappingFragment StoreEntitySet="Documento_Detalle">
+                <ScalarProperty Name="id_Serie" ColumnName="id_Serie" />
+                <ScalarProperty Name="id_Correlativo" ColumnName="id_Correlativo" />
+                <ScalarProperty Name="Nro_Item" ColumnName="Nro_Item" />
+                <ScalarProperty Name="id_Producto" ColumnName="id_Producto" />
+                <ScalarProperty Name="Valor_Venta" ColumnName="Valor_Venta" />
+                <ScalarProperty Name="Igv" ColumnName="Igv" />
+                <ScalarProperty Name="Sub_Total" ColumnName="Sub_Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Habitacion">
+            <EntityTypeMapping TypeName="hotelproModel.Habitacion">
+              <MappingFragment StoreEntitySet="Habitacion">
+                <ScalarProperty Name="id_Habitacion" ColumnName="id_Habitacion" />
+                <ScalarProperty Name="id_Sede" ColumnName="id_Sede" />
+                <ScalarProperty Name="id_Estado_Habitacion" ColumnName="id_Estado_Habitacion" />
+                <ScalarProperty Name="id_Tipo_Habitacion" ColumnName="id_Tipo_Habitacion" />
+                <ScalarProperty Name="Piso" ColumnName="Piso" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="flag_Fecha_Especial" ColumnName="flag_Fecha_Especial" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Precio_Especial">
+            <EntityTypeMapping TypeName="hotelproModel.Precio_Especial">
+              <MappingFragment StoreEntitySet="Precio_Especial">
+                <ScalarProperty Name="id_Precio_Especial" ColumnName="id_Precio_Especial" />
+                <ScalarProperty Name="id_Habitacion" ColumnName="id_Habitacion" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Fecha_Fin" ColumnName="Fecha_Fin" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="hotelproModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="id_Producto" ColumnName="id_Producto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reserva">
+            <EntityTypeMapping TypeName="hotelproModel.Reserva">
+              <MappingFragment StoreEntitySet="Reserva">
+                <ScalarProperty Name="id_Reserva" ColumnName="id_Reserva" />
+                <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
+                <ScalarProperty Name="id_Habitacion" ColumnName="id_Habitacion" />
+                <ScalarProperty Name="id_Estado_Reserva" ColumnName="id_Estado_Reserva" />
+                <ScalarProperty Name="id_Consumo" ColumnName="id_Consumo" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
+                <ScalarProperty Name="Fecha_Salida" ColumnName="Fecha_Salida" />
+                <ScalarProperty Name="Fecha_Inicio_Reserva" ColumnName="Fecha_Inicio_Reserva" />
+                <ScalarProperty Name="Fecha_Fin_Reserva" ColumnName="Fecha_Fin_Reserva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sede">
+            <EntityTypeMapping TypeName="hotelproModel.Sede">
+              <MappingFragment StoreEntitySet="Sede">
+                <ScalarProperty Name="id_Sede" ColumnName="id_Sede" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="id_Ubigeo" ColumnName="id_Ubigeo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ubigeo">
+            <EntityTypeMapping TypeName="hotelproModel.Ubigeo">
+              <MappingFragment StoreEntitySet="Ubigeo">
+                <ScalarProperty Name="id_Ubigeo" ColumnName="id_Ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="idContinente" ColumnName="idContinente" />
+                <ScalarProperty Name="idPais" ColumnName="idPais" />
+                <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
+                <ScalarProperty Name="idProvincia" ColumnName="idProvincia" />
+                <ScalarProperty Name="idDistrito" ColumnName="idDistrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
