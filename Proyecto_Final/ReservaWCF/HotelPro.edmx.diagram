@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bd7cfa8baf8f4b7a8ca67907fffb3721" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="hotelproModel.Cliente" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelproModel.Consumo" Width="1.5" PointX="10" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelproModel.Documento" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelproModel.Documento_Detalle" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelproModel.Habitacion" Width="1.5" PointX="5.375" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelproModel.Precio_Especial" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelproModel.Producto" Width="1.5" PointX="12.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelproModel.Reserva" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelproModel.Sede" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelproModel.Ubigeo" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="hotelproModel.FK__Cliente__id_Ubig__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelproModel.FK__Reserva__id_Clie__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelproModel.FK__Consumo__id_Prod__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelproModel.FK__Reserva__id_Cons__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelproModel.FK__Documento_Detall__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelproModel.FK__Habitacio__id_Se__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelproModel.FK__Precio_Es__id_Ha__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelproModel.FK__Reserva__id_Habi__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelproModel.FK__Sede__id_Ubigeo__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelproModel.FK__Documento__id_Re__03F0984C" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
