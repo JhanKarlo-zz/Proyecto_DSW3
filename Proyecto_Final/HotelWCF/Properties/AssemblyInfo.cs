@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ReservaWCF")]
+[assembly: AssemblyTitle("HotelWCF")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ReservaWCF")]
+[assembly: AssemblyProduct("HotelWCF")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("63a2a304-662d-4b70-ad64-99aec3af09cd")]
+[assembly: Guid("71aed7df-333b-4a14-b81e-5c6c0dffd093")]
 
 // Version information for an assembly consists of the following four values:
 //

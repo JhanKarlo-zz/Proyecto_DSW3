@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{63A2A304-662D-4B70-AD64-99AEC3AF09CD}</ProjectGuid>
+    <ProjectGuid>{71AED7DF-333B-4A14-B81E-5C6C0DFFD093}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ReservaWCF</RootNamespace>
-    <AssemblyName>ReservaWCF</AssemblyName>
+    <RootNamespace>HotelWCF</RootNamespace>
+    <AssemblyName>HotelWCF</AssemblyName>
     <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -35,97 +35,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cliente.cs">
-      <DependentUpon>HotelPro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Consumo.cs">
-      <DependentUpon>HotelPro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Documento.cs">
-      <DependentUpon>HotelPro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Documento_Detalle.cs">
-      <DependentUpon>HotelPro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Habitacion.cs">
-      <DependentUpon>HotelPro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HotelPro.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HotelPro.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HotelPro.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HotelPro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HotelPro.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HotelPro.edmx</DependentUpon>
-    </Compile>
     <Compile Include="IService1.cs" />
-    <Compile Include="Precio_Especial.cs">
-      <DependentUpon>HotelPro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Producto.cs">
-      <DependentUpon>HotelPro.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reserva.cs">
-      <DependentUpon>HotelPro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sede.cs">
-      <DependentUpon>HotelPro.tt</DependentUpon>
-    </Compile>
     <Compile Include="Service1.cs" />
-    <Compile Include="Ubigeo.cs">
-      <DependentUpon>HotelPro.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="HotelPro.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HotelPro.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="HotelPro.edmx.diagram">
-      <DependentUpon>HotelPro.edmx</DependentUpon>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="HotelPro.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HotelPro.edmx</DependentUpon>
-      <LastGenOutput>HotelPro.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="HotelPro.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HotelPro.edmx</DependentUpon>
-      <LastGenOutput>HotelPro.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
