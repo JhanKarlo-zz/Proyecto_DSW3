@@ -83,6 +83,8 @@
       <DependentUpon>hotelpro.edmx</DependentUpon>
     </Compile>
     <Compile Include="IServicioCliente.cs" />
+    <Compile Include="IServicioHabitacion.cs" />
+    <Compile Include="IServicioReserva.cs" />
     <Compile Include="Precio_Especial.cs">
       <DependentUpon>hotelpro.tt</DependentUpon>
     </Compile>
@@ -97,6 +99,8 @@
       <DependentUpon>hotelpro.tt</DependentUpon>
     </Compile>
     <Compile Include="ServicioCliente.cs" />
+    <Compile Include="ServicioHabitacion.cs" />
+    <Compile Include="ServicioReserva.cs" />
     <Compile Include="Ubigeo.cs">
       <DependentUpon>hotelpro.tt</DependentUpon>
     </Compile>
