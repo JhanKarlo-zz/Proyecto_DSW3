@@ -82,7 +82,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>hotelpro.edmx</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="IServicioCliente.cs" />
     <Compile Include="Precio_Especial.cs">
       <DependentUpon>hotelpro.tt</DependentUpon>
     </Compile>
@@ -96,7 +96,7 @@
     <Compile Include="Sede.cs">
       <DependentUpon>hotelpro.tt</DependentUpon>
     </Compile>
-    <Compile Include="Service1.cs" />
+    <Compile Include="ServicioCliente.cs" />
     <Compile Include="Ubigeo.cs">
       <DependentUpon>hotelpro.tt</DependentUpon>
     </Compile>
