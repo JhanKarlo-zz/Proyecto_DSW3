@@ -104,6 +104,15 @@
     <Compile Include="Ubigeo.cs">
       <DependentUpon>hotelpro.tt</DependentUpon>
     </Compile>
+    <Compile Include="USP_Listar_Habitaciones_Libres_Result.cs">
+      <DependentUpon>hotelpro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_Listar_Habitaciones_Por_Fecha_Result.cs">
+      <DependentUpon>hotelpro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_Listar_Habitaciones_Por_Fecha_Tipo_Result.cs">
+      <DependentUpon>hotelpro.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

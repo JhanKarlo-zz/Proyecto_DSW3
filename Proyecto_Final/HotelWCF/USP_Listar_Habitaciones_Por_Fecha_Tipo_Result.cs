@@ -10,16 +10,17 @@
 namespace HotelWCF
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Precio_Especial
+    public partial class USP_Listar_Habitaciones_Por_Fecha_Tipo_Result
     {
-        public short id_Precio_Especial { get; set; }
+        public byte id_Sede { get; set; }
         public short id_Habitacion { get; set; }
-        public Nullable<System.DateTime> Fecha_Inicio { get; set; }
-        public Nullable<System.DateTime> Fecha_Fin { get; set; }
-        public decimal Porcentaje { get; set; }
-    
-        public virtual Habitacion Habitacion { get; set; }
+        public Nullable<byte> id_Tipo { get; set; }
+        public string Tipo { get; set; }
+        public Nullable<byte> Piso { get; set; }
+        public decimal precio { get; set; }
+        public string Descripcion { get; set; }
+        public byte Id_Estado_Reserva { get; set; }
+        public string Estado_Reserva { get; set; }
     }
 }

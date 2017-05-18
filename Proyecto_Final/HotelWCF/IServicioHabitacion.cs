@@ -12,6 +12,23 @@ namespace HotelWCF
     public interface IServicioHabitacion
     {
         [OperationContract]
-        void DoWork();
+        List<HabitacionBE> ListarHabitacionPorFecha(byte IdSede, DateTime FechaInicio, DateTime FechaFin);
+        [OperationContract]
+        List<HabitacionBE> ListarHabitacionesLibres(byte IdSede, DateTime FechaInicio, DateTime FechaFin);
+        [OperationContract]
+        List<HabitacionBE> ListarPrecioHabitacionesPorSede(byte IdSede);
+    }
+    public class HabitacionBE
+    {
+        public int IdHabitacion { get; set; }
+        public int IdSede { get; set; }
+        public byte IdEstado { get; set; }
+        public string DescripcionEstado { get; set; }
+        public byte IdTipo { get; set; }
+        public string DescripcionTipo { get; set; }
+        public int Piso { get; set; }
+        public double Precio { get; set; }
+        public Boolean FechaEspecial { get; set; }
+        public string Descripcion { get; set; }
     }
 }
