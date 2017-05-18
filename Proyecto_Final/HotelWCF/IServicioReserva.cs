@@ -12,6 +12,25 @@ namespace HotelWCF
     public interface IServicioReserva
     {
         [OperationContract]
-        void DoWork();
+        Boolean InsertarReserva(ReservaBE objReserva);
+
+        [OperationContract]
+        Boolean ActualizarReserva(ReservaBE objReserva);
+
+        [OperationContract]
+        List<ReservaBE> DevuelveReservasCliente(byte IdCliente);
+    }
+    public class ReservaBE
+    {
+        public short IdReserva { get; set; }
+        public int IdCliente { get; set; }
+        public short IdHabitacion { get; set; }
+        public byte IdEstadoReserva { get; set; }
+        public short? IdConsumo { get; set; }
+        public DateTime FechaRegistro { get; set; }
+        public DateTime FechaInicioReserva { get; set; }
+        public DateTime FechaFinReserva { get; set; }
+        public DateTime? FechaSalida { get; set; }
+        public DateTime? FechaIngreso { get; set; }
     }
 }
