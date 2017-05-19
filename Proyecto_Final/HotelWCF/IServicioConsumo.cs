@@ -12,6 +12,27 @@ namespace HotelWCF
     public interface IServicioConsumo
     {
         [OperationContract]
-        void DoWork();
+        List<ConsumoBE> ListarConsumoReserva(short IdReserva);
+
+        [OperationContract]
+        Boolean InsertarConsumoReserva(ConsumoBE objConsumoBE);
+
+        [OperationContract]
+        Boolean ActualizarConsumoReserva(ConsumoBE objConsumoBE);
+    }
+    public class ConsumoBE
+    {
+        [DataMember]
+        public short IdConsumo { get; set; }
+        [DataMember]
+        public byte IdEstadoConsumo { get; set; }
+        [DataMember]
+        public short IdProducto { get; set; }
+        [DataMember]
+        public DateTime Fecha { get; set; }
+        [DataMember]
+        public short Cantidad { get; set; }
+        [DataMember]
+        public short IdReserva { get; set; }
     }
 }
