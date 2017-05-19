@@ -10,7 +10,7 @@ namespace HotelWCF
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ServicioCliente" in both code and config file together.
     public class ServicioCliente : IServicioCliente
     {
-        hotelproEntities MiHotel = new HotelWCF.hotelproEntities();
+        hotelproEntities1 MiHotel = new HotelWCF.hotelproEntities1();
         public bool ActualizarCliente(ClienteBE objClienteBE)
         {
             Boolean retorno = false;

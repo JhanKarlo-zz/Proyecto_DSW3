@@ -10,7 +10,7 @@ namespace HotelWCF
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ServicioReserva" in both code and config file together.
     public class ServicioReserva : IServicioReserva
     {
-        hotelproEntities MiHotel = new hotelproEntities();
+        hotelproEntities1 MiHotel = new hotelproEntities1();
         public bool ActualizarReserva(ReservaBE objReserva)
         {
             Boolean retorno = false;
@@ -18,7 +18,6 @@ namespace HotelWCF
             {
                 Reserva reserva = MiHotel.Reserva.Find(objReserva.IdReserva);
                 reserva.id_Cliente = objReserva.IdCliente;
-                reserva.id_Consumo = objReserva.IdConsumo;
                 reserva.id_Estado_Reserva = objReserva.IdEstadoReserva;
                 reserva.id_Habitacion = objReserva.IdHabitacion;
                 reserva.Fecha_Ingreso = objReserva.FechaIngreso;
@@ -49,7 +48,6 @@ namespace HotelWCF
                     ReservaBE objReservaBE = new ReservaBE();
                     objReservaBE.IdReserva = resultado.id_Reserva;
                     objReservaBE.IdCliente = resultado.id_Cliente;
-                    objReservaBE.IdConsumo = resultado.id_Consumo;
                     objReservaBE.IdEstadoReserva = resultado.id_Estado_Reserva;
                     objReservaBE.IdHabitacion = resultado.id_Habitacion;
                     objReservaBE.FechaIngreso = resultado.Fecha_Ingreso;
@@ -74,7 +72,6 @@ namespace HotelWCF
             {
                 Reserva reserva = new Reserva();
                 reserva.id_Cliente = objReserva.IdCliente;
-                reserva.id_Consumo = objReserva.IdConsumo;
                 reserva.id_Estado_Reserva = objReserva.IdEstadoReserva;
                 reserva.id_Habitacion = objReserva.IdHabitacion;
                 reserva.Fecha_Ingreso = objReserva.FechaIngreso;

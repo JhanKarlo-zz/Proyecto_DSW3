@@ -26,7 +26,6 @@ namespace HotelWCF
         public int IdCliente { get; set; }
         public short IdHabitacion { get; set; }
         public byte IdEstadoReserva { get; set; }
-        public short? IdConsumo { get; set; }
         public DateTime FechaRegistro { get; set; }
         public DateTime FechaInicioReserva { get; set; }
         public DateTime FechaFinReserva { get; set; }

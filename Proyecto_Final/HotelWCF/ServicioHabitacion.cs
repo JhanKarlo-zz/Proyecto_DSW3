@@ -13,7 +13,7 @@ namespace HotelWCF
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ServicioHabitacion" in both code and config file together.
     public class ServicioHabitacion : IServicioHabitacion
     {
-        hotelproEntities MiHotel = new hotelproEntities();
+        hotelproEntities1 MiHotel = new hotelproEntities1();
         public List<HabitacionBE> ListarHabitacionesLibres(byte IdSede, DateTime FechaInicio, DateTime FechaFin)
         {
             List<HabitacionBE> ObjListaHabitacion = new List<HabitacionBE>();

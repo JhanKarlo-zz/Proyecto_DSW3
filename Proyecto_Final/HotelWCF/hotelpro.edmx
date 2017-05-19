@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="hotelproModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="hotelproModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="id_Cliente" />
@@ -31,6 +31,7 @@
           <Property Name="id_Producto" Type="smallint" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="cantidad" Type="smallint" Nullable="false" />
+          <Property Name="id_Reserva" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="Documento">
           <Key>
@@ -99,7 +100,6 @@
           <Property Name="id_Cliente" Type="int" Nullable="false" />
           <Property Name="id_Habitacion" Type="smallint" Nullable="false" />
           <Property Name="id_Estado_Reserva" Type="tinyint" Nullable="false" />
-          <Property Name="id_Consumo" Type="smallint" />
           <Property Name="Fecha_Registro" Type="date" Nullable="false" />
           <Property Name="Fecha_Ingreso" Type="date" />
           <Property Name="Fecha_Salida" Type="date" />
@@ -150,6 +150,18 @@
             </Principal>
             <Dependent Role="Consumo">
               <PropertyRef Name="id_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consumo__id_Rese__06CD04F7">
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
+          <End Role="Consumo" Type="Self.Consumo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserva">
+              <PropertyRef Name="id_Reserva" />
+            </Principal>
+            <Dependent Role="Consumo">
+              <PropertyRef Name="id_Reserva" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -215,18 +227,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reserva__id_Cons__72C60C4A">
-          <End Role="Consumo" Type="Self.Consumo" Multiplicity="0..1" />
-          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Consumo">
-              <PropertyRef Name="id_Consumo" />
-            </Principal>
-            <Dependent Role="Reserva">
-              <PropertyRef Name="id_Consumo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Reserva__id_Habi__71D1E811">
           <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
@@ -251,18 +251,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="USP_Listar_Habitaciones_Libres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id_Sede" Type="tinyint" Mode="In" />
-          <Parameter Name="fecha_Inicio_Reserva" Type="date" Mode="In" />
-          <Parameter Name="fecha_Fin_Reserva" Type="date" Mode="In" />
-          <Parameter Name="id_Tipo_Habitacion" Type="tinyint" Mode="In" />
-        </Function>
-        <Function Name="USP_Listar_Habitaciones_Por_Fecha_Tipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id_Sede" Type="tinyint" Mode="In" />
-          <Parameter Name="fecha_Inicio_Reserva" Type="date" Mode="In" />
-          <Parameter Name="fecha_Fin_Reserva" Type="date" Mode="In" />
-          <Parameter Name="id_Tipo_Habitacion" Type="tinyint" Mode="In" />
-        </Function>
         <EntityContainer Name="hotelproModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Consumo" EntityType="Self.Consumo" Schema="dbo" store:Type="Tables" />
@@ -280,6 +268,10 @@
           </AssociationSet>
           <AssociationSet Name="FK__Consumo__id_Prod__6E01572D" Association="Self.FK__Consumo__id_Prod__6E01572D">
             <End Role="Producto" EntitySet="Producto" />
+            <End Role="Consumo" EntitySet="Consumo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consumo__id_Rese__06CD04F7" Association="Self.FK__Consumo__id_Rese__06CD04F7">
+            <End Role="Reserva" EntitySet="Reserva" />
             <End Role="Consumo" EntitySet="Consumo" />
           </AssociationSet>
           <AssociationSet Name="FK__Documento__id_Re__03F0984C" Association="Self.FK__Documento__id_Re__03F0984C">
@@ -302,10 +294,6 @@
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reserva__id_Cons__72C60C4A" Association="Self.FK__Reserva__id_Cons__72C60C4A">
-            <End Role="Consumo" EntitySet="Consumo" />
-            <End Role="Reserva" EntitySet="Reserva" />
-          </AssociationSet>
           <AssociationSet Name="FK__Reserva__id_Habi__71D1E811" Association="Self.FK__Reserva__id_Habi__71D1E811">
             <End Role="Habitacion" EntitySet="Habitacion" />
             <End Role="Reserva" EntitySet="Reserva" />
@@ -315,7 +303,8 @@
             <End Role="Sede" EntitySet="Sede" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="hotelproModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -347,8 +336,9 @@
           <Property Name="id_Producto" Type="Int16" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="cantidad" Type="Int16" Nullable="false" />
+          <Property Name="id_Reserva" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Producto" Relationship="Self.FK__Consumo__id_Prod__6E01572D" FromRole="Consumo" ToRole="Producto" />
-          <NavigationProperty Name="Reserva" Relationship="Self.FK__Reserva__id_Cons__72C60C4A" FromRole="Consumo" ToRole="Reserva" />
+          <NavigationProperty Name="Reserva" Relationship="Self.FK__Consumo__id_Rese__06CD04F7" FromRole="Consumo" ToRole="Reserva" />
         </EntityType>
         <EntityType Name="Documento">
           <Key>
@@ -425,14 +415,13 @@
           <Property Name="id_Cliente" Type="Int32" Nullable="false" />
           <Property Name="id_Habitacion" Type="Int16" Nullable="false" />
           <Property Name="id_Estado_Reserva" Type="Byte" Nullable="false" />
-          <Property Name="id_Consumo" Type="Int16" />
           <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Fecha_Ingreso" Type="DateTime" Precision="0" />
           <Property Name="Fecha_Salida" Type="DateTime" Precision="0" />
           <Property Name="Fecha_Inicio_Reserva" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Fecha_Fin_Reserva" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK__Reserva__id_Clie__70DDC3D8" FromRole="Reserva" ToRole="Cliente" />
-          <NavigationProperty Name="Consumo" Relationship="Self.FK__Reserva__id_Cons__72C60C4A" FromRole="Reserva" ToRole="Consumo" />
+          <NavigationProperty Name="Consumo" Relationship="Self.FK__Consumo__id_Rese__06CD04F7" FromRole="Reserva" ToRole="Consumo" />
           <NavigationProperty Name="Documento" Relationship="Self.FK__Documento__id_Re__03F0984C" FromRole="Reserva" ToRole="Documento" />
           <NavigationProperty Name="Habitacion" Relationship="Self.FK__Reserva__id_Habi__71D1E811" FromRole="Reserva" ToRole="Habitacion" />
         </EntityType>
@@ -499,15 +488,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reserva__id_Cons__72C60C4A">
-          <End Role="Consumo" Type="Self.Consumo" Multiplicity="0..1" />
-          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+        <Association Name="FK__Consumo__id_Rese__06CD04F7">
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
+          <End Role="Consumo" Type="Self.Consumo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Consumo">
-              <PropertyRef Name="id_Consumo" />
+            <Principal Role="Reserva">
+              <PropertyRef Name="id_Reserva" />
             </Principal>
-            <Dependent Role="Reserva">
-              <PropertyRef Name="id_Consumo" />
+            <Dependent Role="Consumo">
+              <PropertyRef Name="id_Reserva" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -585,7 +574,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="hotelproEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="hotelproEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
           <EntitySet Name="Consumo" EntityType="Self.Consumo" />
           <EntitySet Name="Documento" EntityType="Self.Documento" />
@@ -608,9 +597,9 @@
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Consumo" EntitySet="Consumo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reserva__id_Cons__72C60C4A" Association="Self.FK__Reserva__id_Cons__72C60C4A">
-            <End Role="Consumo" EntitySet="Consumo" />
+          <AssociationSet Name="FK__Consumo__id_Rese__06CD04F7" Association="Self.FK__Consumo__id_Rese__06CD04F7">
             <End Role="Reserva" EntitySet="Reserva" />
+            <End Role="Consumo" EntitySet="Consumo" />
           </AssociationSet>
           <AssociationSet Name="FK__Documento__id_Re__03F0984C" Association="Self.FK__Documento__id_Re__03F0984C">
             <End Role="Reserva" EntitySet="Reserva" />
@@ -636,75 +625,13 @@
             <End Role="Ubigeo" EntitySet="Ubigeo" />
             <End Role="Sede" EntitySet="Sede" />
           </AssociationSet>
-          <FunctionImport Name="USP_Listar_Habitaciones_Por_Fecha" ReturnType="Collection(hotelproModel.USP_Listar_Habitaciones_Por_Fecha_Result)">
-            <Parameter Name="id_Sede" Mode="In" Type="Byte" />
-            <Parameter Name="fecha_Inicio_Reserva" Mode="In" Type="DateTime" />
-            <Parameter Name="fecha_Fin_Reserva" Mode="In" Type="DateTime" />
-            <Parameter Name="id_Tipo_Habitacion" Mode="In" Type="Byte" />
-          </FunctionImport>
-          <FunctionImport Name="USP_Listar_Habitaciones_Por_Fecha_Tipo" ReturnType="Collection(hotelproModel.USP_Listar_Habitaciones_Por_Fecha_Tipo_Result)">
-            <Parameter Name="id_Sede" Mode="In" Type="Byte" />
-            <Parameter Name="fecha_Inicio_Reserva" Mode="In" Type="DateTime" />
-            <Parameter Name="fecha_Fin_Reserva" Mode="In" Type="DateTime" />
-            <Parameter Name="id_Tipo_Habitacion" Mode="In" Type="Byte" />
-          </FunctionImport>
-          <FunctionImport Name="USP_Listar_Habitaciones_Libres" ReturnType="Collection(hotelproModel.USP_Listar_Habitaciones_Libres_Result)">
-            <Parameter Name="id_Sede" Mode="In" Type="Byte" />
-            <Parameter Name="fecha_Inicio_Reserva" Mode="In" Type="DateTime" />
-            <Parameter Name="fecha_Fin_Reserva" Mode="In" Type="DateTime" />
-            <Parameter Name="id_Tipo_Habitacion" Mode="In" Type="Byte" />
-          </FunctionImport>
-          <FunctionImport Name="Listar_Habitaciones_Por_Fecha_Tipo" ReturnType="Collection(hotelproModel.USP_Listar_Habitaciones_Por_Fecha_Tipo_Result)">
-            <Parameter Name="id_Sede" Mode="In" Type="Byte" />
-            <Parameter Name="fecha_Inicio_Reserva" Mode="In" Type="DateTime" />
-            <Parameter Name="fecha_Fin_Reserva" Mode="In" Type="DateTime" />
-            <Parameter Name="id_Tipo_Habitacion" Mode="In" Type="Byte" />
-          </FunctionImport>
-          <FunctionImport Name="Listar_Habitaciones_Libres" ReturnType="Collection(hotelproModel.USP_Listar_Habitaciones_Libres_Result)">
-            <Parameter Name="id_Sede" Mode="In" Type="Byte" />
-            <Parameter Name="fecha_Inicio_Reserva" Mode="In" Type="DateTime" />
-            <Parameter Name="fecha_Fin_Reserva" Mode="In" Type="DateTime" />
-            <Parameter Name="id_Tipo_Habitacion" Mode="In" Type="Byte" />
-          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="USP_Listar_Habitaciones_Por_Fecha_Result">
-          <Property Type="Byte" Name="id_Sede" Nullable="false" />
-          <Property Type="Int16" Name="id_Habitacion" Nullable="false" />
-          <Property Type="Byte" Name="Tipo" Nullable="true" />
-          <Property Type="Byte" Name="Piso" Nullable="true" />
-          <Property Type="Decimal" Name="precio" Nullable="false" Precision="19" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
-          <Property Type="Byte" Name="Id_Estado" Nullable="false" />
-          <Property Type="String" Name="ESTADO" Nullable="true" MaxLength="9" />
-        </ComplexType>
-        <ComplexType Name="USP_Listar_Habitaciones_Por_Fecha_Tipo_Result">
-          <Property Type="Byte" Name="id_Sede" Nullable="false" />
-          <Property Type="Int16" Name="id_Habitacion" Nullable="false" />
-          <Property Type="Byte" Name="id_Tipo" Nullable="true" />
-          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="11" />
-          <Property Type="Byte" Name="Piso" Nullable="true" />
-          <Property Type="Decimal" Name="precio" Nullable="false" Precision="19" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
-          <Property Type="Byte" Name="Id_Estado_Reserva" Nullable="false" />
-          <Property Type="String" Name="Estado_Reserva" Nullable="true" MaxLength="9" />
-          </ComplexType>
-        <ComplexType Name="USP_Listar_Habitaciones_Libres_Result">
-          <Property Type="Byte" Name="id_Sede" Nullable="false" />
-          <Property Type="Int16" Name="id_Habitacion" Nullable="false" />
-          <Property Type="Byte" Name="id_Tipo" Nullable="true" />
-          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="11" />
-          <Property Type="Byte" Name="Piso" Nullable="true" />
-          <Property Type="Decimal" Name="precio" Nullable="false" Precision="19" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
-          <Property Type="Byte" Name="id_estado_Reserva" Nullable="false" />
-          <Property Type="String" Name="Estado_Reserva" Nullable="true" MaxLength="9" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="hotelproModelStoreContainer" CdmEntityContainer="hotelproEntities">
+        <EntityContainerMapping StorageEntityContainer="hotelproModelStoreContainer" CdmEntityContainer="hotelproEntities1">
           <EntitySetMapping Name="Cliente">
             <EntityTypeMapping TypeName="hotelproModel.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
@@ -731,6 +658,7 @@
                 <ScalarProperty Name="id_Producto" ColumnName="id_Producto" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="id_Reserva" ColumnName="id_Reserva" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -802,7 +730,6 @@
                 <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
                 <ScalarProperty Name="id_Habitacion" ColumnName="id_Habitacion" />
                 <ScalarProperty Name="id_Estado_Reserva" ColumnName="id_Estado_Reserva" />
-                <ScalarProperty Name="id_Consumo" ColumnName="id_Consumo" />
                 <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
                 <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
                 <ScalarProperty Name="Fecha_Salida" ColumnName="Fecha_Salida" />
@@ -836,64 +763,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="USP_Listar_Habitaciones_Por_Fecha_Tipo" FunctionName="hotelproModel.Store.USP_Listar_Habitaciones_Por_Fecha_Tipo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="hotelproModel.USP_Listar_Habitaciones_Por_Fecha_Tipo_Result">
-                <ScalarProperty Name="id_Sede" ColumnName="id_Sede" />
-                <ScalarProperty Name="id_Habitacion" ColumnName="id_Habitacion" />
-                <ScalarProperty Name="id_Tipo" ColumnName="id_Tipo" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Piso" ColumnName="Piso" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="USP_Listar_Habitaciones_Libres" FunctionName="hotelproModel.Store.USP_Listar_Habitaciones_Libres">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="hotelproModel.USP_Listar_Habitaciones_Libres_Result">
-                <ScalarProperty Name="id_Sede" ColumnName="id_Sede" />
-                <ScalarProperty Name="id_Habitacion" ColumnName="id_Habitacion" />
-                <ScalarProperty Name="id_Tipo" ColumnName="id_Tipo" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Piso" ColumnName="Piso" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="id_estado_Reserva" ColumnName="id_estado_Reserva" />
-                <ScalarProperty Name="Estado_Reserva" ColumnName="Estado_Reserva" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Listar_Habitaciones_Por_Fecha_Tipo" FunctionName="hotelproModel.Store.USP_Listar_Habitaciones_Por_Fecha_Tipo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="hotelproModel.USP_Listar_Habitaciones_Por_Fecha_Tipo_Result">
-                <ScalarProperty Name="id_Sede" ColumnName="id_Sede" />
-                <ScalarProperty Name="id_Habitacion" ColumnName="id_Habitacion" />
-                <ScalarProperty Name="id_Tipo" ColumnName="id_Tipo" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Piso" ColumnName="Piso" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Id_Estado_Reserva" ColumnName="Id_Estado_Reserva" />
-                <ScalarProperty Name="Estado_Reserva" ColumnName="Estado_Reserva" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Listar_Habitaciones_Libres" FunctionName="hotelproModel.Store.USP_Listar_Habitaciones_Libres">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="hotelproModel.USP_Listar_Habitaciones_Libres_Result">
-                <ScalarProperty Name="id_Sede" ColumnName="id_Sede" />
-                <ScalarProperty Name="id_Habitacion" ColumnName="id_Habitacion" />
-                <ScalarProperty Name="id_Tipo" ColumnName="id_Tipo" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Piso" ColumnName="Piso" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="id_estado_Reserva" ColumnName="id_estado_Reserva" />
-                <ScalarProperty Name="Estado_Reserva" ColumnName="Estado_Reserva" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

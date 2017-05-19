@@ -83,6 +83,7 @@
       <DependentUpon>hotelpro.edmx</DependentUpon>
     </Compile>
     <Compile Include="IServicioCliente.cs" />
+    <Compile Include="IServicioConsumo.cs" />
     <Compile Include="IServicioHabitacion.cs" />
     <Compile Include="IServicioReserva.cs" />
     <Compile Include="Precio_Especial.cs">
@@ -99,18 +100,10 @@
       <DependentUpon>hotelpro.tt</DependentUpon>
     </Compile>
     <Compile Include="ServicioCliente.cs" />
+    <Compile Include="ServicioConsumo.cs" />
     <Compile Include="ServicioHabitacion.cs" />
     <Compile Include="ServicioReserva.cs" />
     <Compile Include="Ubigeo.cs">
-      <DependentUpon>hotelpro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="USP_Listar_Habitaciones_Libres_Result.cs">
-      <DependentUpon>hotelpro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="USP_Listar_Habitaciones_Por_Fecha_Result.cs">
-      <DependentUpon>hotelpro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="USP_Listar_Habitaciones_Por_Fecha_Tipo_Result.cs">
       <DependentUpon>hotelpro.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -126,6 +119,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="hotelpro.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>hotelpro.edmx</DependentUpon>
@@ -136,9 +132,6 @@
       <DependentUpon>hotelpro.edmx</DependentUpon>
       <LastGenOutput>hotelpro.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
