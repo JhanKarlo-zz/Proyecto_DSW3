@@ -34,5 +34,28 @@ namespace HotelWCF
         public short Cantidad { get; set; }
         [DataMember]
         public short IdReserva { get; set; }
+        [DataMember]
+        public string DescripcionEstado { get; set; }
+
+        public string DevuelveDescripcionEstado(byte _idEstado)
+        {
+            switch (_idEstado)
+                {
+                    case 0:
+                        return "PENDIENTE";
+
+                    case 1:
+                        return "RESERVADO";
+
+                    case 2:
+                        return "PAGADO";
+
+                    case 3:
+                        return "ANULADO";
+
+                default:
+                        return null;
+            }
+        }
     }
 }

@@ -27,11 +27,7 @@ namespace HotelWCF
         [DataMember]
         public byte IdEstado { get; set; }
         [DataMember]
-        public string DescripcionEstado { get; set; }
-        [DataMember]
         public byte IdTipo { get; set; }
-        [DataMember]
-        public string DescripcionTipo { get; set; }
         [DataMember]
         public int Piso { get; set; }
         [DataMember]
@@ -40,5 +36,51 @@ namespace HotelWCF
         public Boolean FechaEspecial { get; set; }
         [DataMember]
         public string Descripcion { get; set; }
+        [DataMember]
+        public string DescripcionEstado { get; set; }
+        [DataMember]
+        public string DescripcionTipo { get; set; }
+
+        public string DevuelveDescripcionEstado(byte _idEstado)
+        {
+            switch (_idEstado)
+                {
+                    case 0:
+                        return "LIBRE";
+
+                    case 1:
+                        return "RESERVADO";
+
+                    case 2:
+                        return "PAGADO";
+
+                    case 3:
+                        return "ANULADO";
+
+                default:
+                        return null;
+            }
+        }
+
+        public string DevuelveDescripcionTipo(byte _idTipo)
+        {
+            switch (_idTipo)
+            {
+                case 1:
+                    return "INDIVIDUAL";
+
+                case 2:
+                    return "HABITACION DOBLE";
+
+                case 3:
+                    return "HABITACION TRIPLE";
+
+                case 4:
+                    return "SUITE";
+
+                default:
+                    return null;
+            }
+        }
     }
 }
