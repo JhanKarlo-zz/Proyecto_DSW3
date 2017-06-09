@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServicioConsumo" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/HotelWCF" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioConsumo_ListarConsumoReserva_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConsumoReserva" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConsumo_ListarConsumoReserva_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConsumoReservaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConsumo_InsertarConsumoReserva_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarConsumoReserva" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConsumo_InsertarConsumoReserva_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarConsumoReservaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConsumo_ActualizarConsumoReserva_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarConsumoReserva" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConsumo_ActualizarConsumoReserva_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarConsumoReservaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioConsumo">
+    <wsdl:operation name="ListarConsumoReserva">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConsumo/ListarConsumoReserva" message="tns:IServicioConsumo_ListarConsumoReserva_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConsumo/ListarConsumoReservaResponse" message="tns:IServicioConsumo_ListarConsumoReserva_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarConsumoReserva">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConsumo/InsertarConsumoReserva" message="tns:IServicioConsumo_InsertarConsumoReserva_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConsumo/InsertarConsumoReservaResponse" message="tns:IServicioConsumo_InsertarConsumoReserva_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarConsumoReserva">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConsumo/ActualizarConsumoReserva" message="tns:IServicioConsumo_ActualizarConsumoReserva_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConsumo/ActualizarConsumoReservaResponse" message="tns:IServicioConsumo_ActualizarConsumoReserva_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioConsumo" type="tns:IServicioConsumo">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarConsumoReserva">
+      <soap:operation soapAction="http://tempuri.org/IServicioConsumo/ListarConsumoReserva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarConsumoReserva">
+      <soap:operation soapAction="http://tempuri.org/IServicioConsumo/InsertarConsumoReserva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarConsumoReserva">
+      <soap:operation soapAction="http://tempuri.org/IServicioConsumo/ActualizarConsumoReserva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioConsumo">
+    <wsdl:port name="BasicHttpBinding_IServicioConsumo" binding="tns:BasicHttpBinding_IServicioConsumo">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/HotelWCF/ServicioConsumo/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

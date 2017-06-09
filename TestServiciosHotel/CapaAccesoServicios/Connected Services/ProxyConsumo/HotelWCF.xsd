@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HotelWCF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HotelWCF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfConsumoBE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConsumoBE" nillable="true" type="tns:ConsumoBE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConsumoBE" nillable="true" type="tns:ArrayOfConsumoBE" />
+  <xs:complexType name="ConsumoBE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:short" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdConsumo" type="xs:short" />
+      <xs:element minOccurs="0" name="IdEstadoConsumo" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="IdProducto" type="xs:short" />
+      <xs:element minOccurs="0" name="IdReserva" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConsumoBE" nillable="true" type="tns:ConsumoBE" />
+</xs:schema>
