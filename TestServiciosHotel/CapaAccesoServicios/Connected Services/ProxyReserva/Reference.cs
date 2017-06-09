@@ -203,10 +203,10 @@ namespace CapaAccesoServicios.ProxyReserva {
         System.Threading.Tasks.Task<bool> ActualizarReservaAsync(CapaAccesoServicios.ProxyReserva.ReservaBE objReserva);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioReserva/DevuelveReservasCliente", ReplyAction="http://tempuri.org/IServicioReserva/DevuelveReservasClienteResponse")]
-        CapaAccesoServicios.ProxyReserva.ReservaBE[] DevuelveReservasCliente(byte IdCliente);
+        System.Collections.Generic.List<CapaAccesoServicios.ProxyReserva.ReservaBE> DevuelveReservasCliente(byte IdCliente);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioReserva/DevuelveReservasCliente", ReplyAction="http://tempuri.org/IServicioReserva/DevuelveReservasClienteResponse")]
-        System.Threading.Tasks.Task<CapaAccesoServicios.ProxyReserva.ReservaBE[]> DevuelveReservasClienteAsync(byte IdCliente);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyReserva.ReservaBE>> DevuelveReservasClienteAsync(byte IdCliente);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -252,11 +252,11 @@ namespace CapaAccesoServicios.ProxyReserva {
             return base.Channel.ActualizarReservaAsync(objReserva);
         }
         
-        public CapaAccesoServicios.ProxyReserva.ReservaBE[] DevuelveReservasCliente(byte IdCliente) {
+        public System.Collections.Generic.List<CapaAccesoServicios.ProxyReserva.ReservaBE> DevuelveReservasCliente(byte IdCliente) {
             return base.Channel.DevuelveReservasCliente(IdCliente);
         }
         
-        public System.Threading.Tasks.Task<CapaAccesoServicios.ProxyReserva.ReservaBE[]> DevuelveReservasClienteAsync(byte IdCliente) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyReserva.ReservaBE>> DevuelveReservasClienteAsync(byte IdCliente) {
             return base.Channel.DevuelveReservasClienteAsync(IdCliente);
         }
     }

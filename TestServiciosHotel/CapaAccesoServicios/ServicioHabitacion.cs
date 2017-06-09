@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaAccesoServicios
 {
-    public class Class1
+    class ServicioHabitacion
     {
     }
 }

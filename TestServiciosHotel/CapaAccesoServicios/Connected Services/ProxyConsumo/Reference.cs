@@ -143,10 +143,10 @@ namespace CapaAccesoServicios.ProxyConsumo {
     public interface IServicioConsumo {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioConsumo/ListarConsumoReserva", ReplyAction="http://tempuri.org/IServicioConsumo/ListarConsumoReservaResponse")]
-        CapaAccesoServicios.ProxyConsumo.ConsumoBE[] ListarConsumoReserva(short IdReserva);
+        System.Collections.Generic.List<CapaAccesoServicios.ProxyConsumo.ConsumoBE> ListarConsumoReserva(short IdReserva);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioConsumo/ListarConsumoReserva", ReplyAction="http://tempuri.org/IServicioConsumo/ListarConsumoReservaResponse")]
-        System.Threading.Tasks.Task<CapaAccesoServicios.ProxyConsumo.ConsumoBE[]> ListarConsumoReservaAsync(short IdReserva);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyConsumo.ConsumoBE>> ListarConsumoReservaAsync(short IdReserva);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioConsumo/InsertarConsumoReserva", ReplyAction="http://tempuri.org/IServicioConsumo/InsertarConsumoReservaResponse")]
         bool InsertarConsumoReserva(CapaAccesoServicios.ProxyConsumo.ConsumoBE objConsumoBE);
@@ -188,11 +188,11 @@ namespace CapaAccesoServicios.ProxyConsumo {
                 base(binding, remoteAddress) {
         }
         
-        public CapaAccesoServicios.ProxyConsumo.ConsumoBE[] ListarConsumoReserva(short IdReserva) {
+        public System.Collections.Generic.List<CapaAccesoServicios.ProxyConsumo.ConsumoBE> ListarConsumoReserva(short IdReserva) {
             return base.Channel.ListarConsumoReserva(IdReserva);
         }
         
-        public System.Threading.Tasks.Task<CapaAccesoServicios.ProxyConsumo.ConsumoBE[]> ListarConsumoReservaAsync(short IdReserva) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyConsumo.ConsumoBE>> ListarConsumoReservaAsync(short IdReserva) {
             return base.Channel.ListarConsumoReservaAsync(IdReserva);
         }
         

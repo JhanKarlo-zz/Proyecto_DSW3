@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServicioUbigeo" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/HotelWCF" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioUbigeo_ListarDepartamentos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDepartamentos" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUbigeo_ListarDepartamentos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDepartamentosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUbigeo_ListarProvinciasDepartamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProvinciasDepartamento" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUbigeo_ListarProvinciasDepartamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProvinciasDepartamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUbigeo_ListarDistritosProvincia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDistritosProvincia" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUbigeo_ListarDistritosProvincia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDistritosProvinciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUbigeo_DevuelveUbigeo_InputMessage">
+    <wsdl:part name="parameters" element="tns:DevuelveUbigeo" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUbigeo_DevuelveUbigeo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DevuelveUbigeoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioUbigeo">
+    <wsdl:operation name="ListarDepartamentos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUbigeo/ListarDepartamentos" message="tns:IServicioUbigeo_ListarDepartamentos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUbigeo/ListarDepartamentosResponse" message="tns:IServicioUbigeo_ListarDepartamentos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarProvinciasDepartamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUbigeo/ListarProvinciasDepartamento" message="tns:IServicioUbigeo_ListarProvinciasDepartamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUbigeo/ListarProvinciasDepartamentoResponse" message="tns:IServicioUbigeo_ListarProvinciasDepartamento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarDistritosProvincia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUbigeo/ListarDistritosProvincia" message="tns:IServicioUbigeo_ListarDistritosProvincia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUbigeo/ListarDistritosProvinciaResponse" message="tns:IServicioUbigeo_ListarDistritosProvincia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DevuelveUbigeo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUbigeo/DevuelveUbigeo" message="tns:IServicioUbigeo_DevuelveUbigeo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUbigeo/DevuelveUbigeoResponse" message="tns:IServicioUbigeo_DevuelveUbigeo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioUbigeo" type="tns:IServicioUbigeo">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarDepartamentos">
+      <soap:operation soapAction="http://tempuri.org/IServicioUbigeo/ListarDepartamentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarProvinciasDepartamento">
+      <soap:operation soapAction="http://tempuri.org/IServicioUbigeo/ListarProvinciasDepartamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarDistritosProvincia">
+      <soap:operation soapAction="http://tempuri.org/IServicioUbigeo/ListarDistritosProvincia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DevuelveUbigeo">
+      <soap:operation soapAction="http://tempuri.org/IServicioUbigeo/DevuelveUbigeo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioUbigeo">
+    <wsdl:port name="BasicHttpBinding_IServicioUbigeo" binding="tns:BasicHttpBinding_IServicioUbigeo">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/HotelWCF/ServicioUbigeo/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -207,22 +207,22 @@ namespace CapaAccesoServicios.ProxyHabitacion {
     public interface IServicioHabitacion {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHabitacion/ListarHabitacionPorFecha", ReplyAction="http://tempuri.org/IServicioHabitacion/ListarHabitacionPorFechaResponse")]
-        CapaAccesoServicios.ProxyHabitacion.HabitacionBE[] ListarHabitacionPorFecha(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin);
+        System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE> ListarHabitacionPorFecha(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHabitacion/ListarHabitacionPorFecha", ReplyAction="http://tempuri.org/IServicioHabitacion/ListarHabitacionPorFechaResponse")]
-        System.Threading.Tasks.Task<CapaAccesoServicios.ProxyHabitacion.HabitacionBE[]> ListarHabitacionPorFechaAsync(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE>> ListarHabitacionPorFechaAsync(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHabitacion/ListarHabitacionesLibres", ReplyAction="http://tempuri.org/IServicioHabitacion/ListarHabitacionesLibresResponse")]
-        CapaAccesoServicios.ProxyHabitacion.HabitacionBE[] ListarHabitacionesLibres(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin);
+        System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE> ListarHabitacionesLibres(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHabitacion/ListarHabitacionesLibres", ReplyAction="http://tempuri.org/IServicioHabitacion/ListarHabitacionesLibresResponse")]
-        System.Threading.Tasks.Task<CapaAccesoServicios.ProxyHabitacion.HabitacionBE[]> ListarHabitacionesLibresAsync(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE>> ListarHabitacionesLibresAsync(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHabitacion/ListarPrecioHabitacionesPorSede", ReplyAction="http://tempuri.org/IServicioHabitacion/ListarPrecioHabitacionesPorSedeResponse")]
-        CapaAccesoServicios.ProxyHabitacion.HabitacionBE[] ListarPrecioHabitacionesPorSede(byte IdSede);
+        System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE> ListarPrecioHabitacionesPorSede(byte IdSede);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHabitacion/ListarPrecioHabitacionesPorSede", ReplyAction="http://tempuri.org/IServicioHabitacion/ListarPrecioHabitacionesPorSedeResponse")]
-        System.Threading.Tasks.Task<CapaAccesoServicios.ProxyHabitacion.HabitacionBE[]> ListarPrecioHabitacionesPorSedeAsync(byte IdSede);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE>> ListarPrecioHabitacionesPorSedeAsync(byte IdSede);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -252,27 +252,27 @@ namespace CapaAccesoServicios.ProxyHabitacion {
                 base(binding, remoteAddress) {
         }
         
-        public CapaAccesoServicios.ProxyHabitacion.HabitacionBE[] ListarHabitacionPorFecha(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin) {
+        public System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE> ListarHabitacionPorFecha(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin) {
             return base.Channel.ListarHabitacionPorFecha(IdSede, FechaInicio, FechaFin);
         }
         
-        public System.Threading.Tasks.Task<CapaAccesoServicios.ProxyHabitacion.HabitacionBE[]> ListarHabitacionPorFechaAsync(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE>> ListarHabitacionPorFechaAsync(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin) {
             return base.Channel.ListarHabitacionPorFechaAsync(IdSede, FechaInicio, FechaFin);
         }
         
-        public CapaAccesoServicios.ProxyHabitacion.HabitacionBE[] ListarHabitacionesLibres(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin) {
+        public System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE> ListarHabitacionesLibres(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin) {
             return base.Channel.ListarHabitacionesLibres(IdSede, FechaInicio, FechaFin);
         }
         
-        public System.Threading.Tasks.Task<CapaAccesoServicios.ProxyHabitacion.HabitacionBE[]> ListarHabitacionesLibresAsync(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE>> ListarHabitacionesLibresAsync(byte IdSede, System.DateTime FechaInicio, System.DateTime FechaFin) {
             return base.Channel.ListarHabitacionesLibresAsync(IdSede, FechaInicio, FechaFin);
         }
         
-        public CapaAccesoServicios.ProxyHabitacion.HabitacionBE[] ListarPrecioHabitacionesPorSede(byte IdSede) {
+        public System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE> ListarPrecioHabitacionesPorSede(byte IdSede) {
             return base.Channel.ListarPrecioHabitacionesPorSede(IdSede);
         }
         
-        public System.Threading.Tasks.Task<CapaAccesoServicios.ProxyHabitacion.HabitacionBE[]> ListarPrecioHabitacionesPorSedeAsync(byte IdSede) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE>> ListarPrecioHabitacionesPorSedeAsync(byte IdSede) {
             return base.Channel.ListarPrecioHabitacionesPorSedeAsync(IdSede);
         }
     }

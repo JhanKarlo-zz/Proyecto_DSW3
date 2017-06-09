@@ -50,7 +50,7 @@ namespace HotelWCF
                 //Busca cliente por el dni enviado
                 Cliente cliente = (from c in MiHotel.Cliente
                                    where c.NroDocumento == dni
-                                   select c).First();
+                                   select c).FirstOrDefault();
                 //Si encuentra datos ingresa al if
                 if (cliente != null)
                 {

@@ -86,6 +86,7 @@
     <Compile Include="IServicioConsumo.cs" />
     <Compile Include="IServicioHabitacion.cs" />
     <Compile Include="IServicioReserva.cs" />
+    <Compile Include="IServicioUbigeo.cs" />
     <Compile Include="Precio_Especial.cs">
       <DependentUpon>hotelpro.tt</DependentUpon>
     </Compile>
@@ -103,6 +104,7 @@
     <Compile Include="ServicioConsumo.cs" />
     <Compile Include="ServicioHabitacion.cs" />
     <Compile Include="ServicioReserva.cs" />
+    <Compile Include="ServicioUbigeo.cs" />
     <Compile Include="Ubigeo.cs">
       <DependentUpon>hotelpro.tt</DependentUpon>
     </Compile>
