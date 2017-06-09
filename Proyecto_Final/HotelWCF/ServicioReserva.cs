@@ -46,7 +46,7 @@ namespace HotelWCF
                 foreach (var resultado in query)
                 {
                     ReservaBE objReservaBE = new ReservaBE();
-                    objReservaBE.IdReserva = resultado.id_Reserva;
+                    objReservaBE.IdReserva = resultado.id_Reserva; 
                     objReservaBE.IdCliente = resultado.id_Cliente;
                     objReservaBE.IdEstadoReserva = resultado.id_Estado_Reserva;
                     objReservaBE.IdHabitacion = resultado.id_Habitacion;
