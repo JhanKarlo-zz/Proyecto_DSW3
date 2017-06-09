@@ -166,17 +166,5 @@ namespace TestEscritorio
                 this.Close();
             }
         }
-        //private void cargarDepartamentos()
-        //{
-        //    cboDepartamento.DataSource = objServicioUbigeo.ListarDepartamentos();
-        //    cboDepartamento.ValueMember = "idDepartamento";
-        //    cboDepartamento.DisplayMember = "Departamento";
-        //}
-        //private void cargarProvinciasDepartamento(string idDepartamento)
-        //{
-        //    cboProvincia.DataSource = objServicioUbigeo.ListarProvinciasDepartamento(idDepartamento);
-        //    cboProvincia.ValueMember = "idProvincia";
-        //    cboProvincia.DisplayMember = "Provincia";
-        //}
     }
 }
