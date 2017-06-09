@@ -16,15 +16,21 @@ namespace HotelWCF
             Boolean retorno = false;
             try
             {
+                //Buscamos Consumo en la base de datos
                 Consumo consumo = MiHotel.Consumo.Find(objConsumoBE.IdConsumo);
-
-                consumo.id_Estado_Consumo = objConsumoBE.IdEstadoConsumo;
-                consumo.id_Producto = objConsumoBE.IdProducto;
-                consumo.Fecha = objConsumoBE.Fecha;
-                consumo.cantidad = objConsumoBE.Cantidad;
-                consumo.id_Reserva = objConsumoBE.IdReserva;
-                MiHotel.SaveChanges();
-                retorno = true;
+                //Si encuentra consumo entra al if
+                if (consumo != null)
+                {
+                    //asigna todo los datos nuestro objeto "ConsumoBE" a "Consumo" de la base de datos
+                    consumo.id_Estado_Consumo = objConsumoBE.IdEstadoConsumo;
+                    consumo.id_Producto = objConsumoBE.IdProducto;
+                    consumo.Fecha = objConsumoBE.Fecha;
+                    consumo.cantidad = objConsumoBE.Cantidad;
+                    consumo.id_Reserva = objConsumoBE.IdReserva;
+                    //Guardamos cambios
+                    MiHotel.SaveChanges();
+                    retorno = true;
+                }
             }
             catch (Exception ex)
             {
@@ -38,6 +44,7 @@ namespace HotelWCF
             Boolean retorno = false;
             try
             {
+                //creamos nueva instancia del objeto "Consumo" de la base de datos y se asigna los datos de nuetro objeto "ConsumoBE"
                 Consumo consumo = new Consumo();
                 consumo.id_Estado_Consumo = 1;
                 consumo.id_Producto = objConsumoBE.IdProducto;
@@ -57,19 +64,25 @@ namespace HotelWCF
 
         public List<ConsumoBE> ListarConsumoReserva(short IdReserva)
         {
+            //Creamos una lista de Consumos
             List<ConsumoBE> objListaConsumo = new List<ConsumoBE>();
             try
             {
-                var query = (from o in MiHotel.Consumo
-                             where o.id_Reserva == IdReserva
-                             select o);
+                //Buscamos todos los consumo por el IdReserva que recibe como parametro
+                var query = (from c in MiHotel.Consumo
+                             where c.id_Reserva == IdReserva
+                             select c);
+
+                //Recorre el resultado
                 foreach (var resultado in query)
                 {
+                    //Crea un nuevo objeto de nuestra clase "ConsumoBE" y agrega los datos del resultado
                     ConsumoBE objConsumoBE = new ConsumoBE();
                     objConsumoBE.IdConsumo = resultado.id_Consumo;
                     objConsumoBE.IdEstadoConsumo = resultado.id_Estado_Consumo;
+                    objConsumoBE.DescripcionEstado = objConsumoBE.DevuelveDescripcionEstado(objConsumoBE.IdEstadoConsumo);
                     objConsumoBE.IdProducto = resultado.id_Producto;
-                    objConsumoBE.Fecha = objConsumoBE.Fecha;
+                    objConsumoBE.Fecha = resultado.Fecha;
                     objConsumoBE.Cantidad = resultado.cantidad;
                     objConsumoBE.IdReserva = resultado.id_Reserva;
                     objListaConsumo.Add(objConsumoBE);
