@@ -17,7 +17,13 @@ namespace HotelWCF
         List<HabitacionBE> ListarHabitacionesLibres(byte IdSede, DateTime FechaInicio, DateTime FechaFin);
         [OperationContract]
         List<HabitacionBE> ListarPrecioHabitacionesPorSede(byte IdSede);
+        [OperationContract]
+        HabitacionBE DevuelveHabitacion(int idHabitacion);
+        [OperationContract]
+        List<SedeBE> ListarSede();
     }
+    [DataContract]
+    [Serializable]
     public class HabitacionBE
     {
         [DataMember]
@@ -82,5 +88,18 @@ namespace HotelWCF
                     return null;
             }
         }
+    }
+    [DataContract]
+    [Serializable]
+    public class SedeBE
+    {
+        [DataMember]
+        public byte idSede { get; set; }
+        [DataMember]
+        public string Nombre { get; set; }
+        [DataMember]
+        public string Direccion { get; set; }
+        [DataMember]
+        public string idUbigeo { get; set; }
     }
 }

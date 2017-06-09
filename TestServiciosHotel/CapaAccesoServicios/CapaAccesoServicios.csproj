@@ -108,6 +108,9 @@
     <None Include="Connected Services\ProxyHabitacion\CapaAccesoServicios.ProxyHabitacion.HabitacionBE.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ProxyHabitacion\CapaAccesoServicios.ProxyHabitacion.SedeBE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ProxyHabitacion\HotelWCF.xsd">
       <SubType>Designer</SubType>
     </None>

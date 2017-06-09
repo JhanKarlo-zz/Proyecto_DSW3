@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
@@ -64,7 +66,7 @@ namespace HotelWCF
             }
             return objListaReserva;
         }
-        
+
         public bool InsertarReserva(ReservaBE objReserva)
         {
             Boolean retorno = false;
@@ -88,6 +90,21 @@ namespace HotelWCF
                 throw new Exception(ex.Message);
             }
             return retorno;
+        }
+
+        public List<ReservaBE> ListarReservaFechaEstado(DateTime FechaInicio, DateTime FechaFinal, byte? idEstadoReserva)
+        {
+            List<ReservaBE> objListaReserva = new List<ReservaBE>();
+            try
+            {
+                var query = MiHotel.ListarReservaPorFechaEstado(FechaInicio,FechaFinal,idEstadoReserva);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return objListaReserva;
         }
     }
 }

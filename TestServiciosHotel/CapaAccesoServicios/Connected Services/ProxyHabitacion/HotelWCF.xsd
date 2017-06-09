@@ -21,4 +21,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="HabitacionBE" nillable="true" type="tns:HabitacionBE" />
+  <xs:complexType name="ArrayOfSedeBE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SedeBE" nillable="true" type="tns:SedeBE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSedeBE" nillable="true" type="tns:ArrayOfSedeBE" />
+  <xs:complexType name="SedeBE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idSede" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="idUbigeo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SedeBE" nillable="true" type="tns:SedeBE" />
 </xs:schema>

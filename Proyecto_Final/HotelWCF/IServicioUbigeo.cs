@@ -20,6 +20,8 @@ namespace HotelWCF
         [OperationContract]
         UbigeoBE DevuelveUbigeo(string idUbigeo);
     }
+    [DataContract]
+    [Serializable]
     public class UbigeoBE
     {
         [DataMember]

@@ -17,7 +17,12 @@ namespace HotelWCF
         Boolean InsertarCliente(ClienteBE objClienteBE);
         [OperationContract]
         Boolean ActualizarCliente(ClienteBE objClienteBE);
+
+        [OperationContract]
+        List<ClienteBE> FrecuenciaClientes();
     }
+    [DataContract]
+    [Serializable]
     public class ClienteBE
     {
         [DataMember]
@@ -44,5 +49,15 @@ namespace HotelWCF
         public string IdUbigeo { get; set; }
         [DataMember]
         public byte IdTipoCliente { get; set; }
+        [DataMember]
+        public int? Cantidad { get; set; }
+        [DataMember]
+        public UbigeoBE Ubigeo { get; set; }
+        [DataMember]
+        public int? Reservado { get; set; }
+        [DataMember]
+        public int? Pagado { get; set; }
+        [DataMember]
+        public int? Anulado { get; set; }
     }
 }

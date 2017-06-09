@@ -108,6 +108,12 @@
     <Compile Include="Ubigeo.cs">
       <DependentUpon>hotelpro.tt</DependentUpon>
     </Compile>
+    <Compile Include="USP_Listar_Frecuencia_Cliente_Result.cs">
+      <DependentUpon>hotelpro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_Listar_Reserva_Por_Fecha_Estado_Result.cs">
+      <DependentUpon>hotelpro.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

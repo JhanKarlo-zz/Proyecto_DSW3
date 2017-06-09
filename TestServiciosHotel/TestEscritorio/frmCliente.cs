@@ -17,6 +17,7 @@ namespace TestEscritorio
     {
         ServiciosUbigeo objServicioUbigeo = new ServiciosUbigeo();
         ServiciosCliente objServicioCliente = new ServiciosCliente();
+        public ClienteBE objClienteBE { get; set; }
         public frmCliente()
         {
             InitializeComponent();
@@ -83,8 +84,8 @@ namespace TestEscritorio
                 {
                     grbValidacion.Enabled = false;
                     grbDatos.Enabled = true;
-                    var respuesta = objServicioCliente.DevuelveClientePorDNI(txtNroDocumento.Text);
-                    if (respuesta == null)
+                    objClienteBE = objServicioCliente.DevuelveClientePorDNI(txtNroDocumento.Text);
+                    if (objClienteBE == null)
                     {
                         MessageBox.Show("Cliente no existe, porfavor llenar los datos");
                         txtNombres.Enabled = true;
@@ -94,16 +95,16 @@ namespace TestEscritorio
                     else
                     {
                         MessageBox.Show("Cliente registrado");
-                        txtNombres.Text = respuesta.Nombres;
-                        txtPaterno.Text = respuesta.ApellidoPaterno;
-                        txtMaterno.Text = respuesta.ApellidoMaterno;
-                        txtDireccion.Text = respuesta.Direccion;
-                        txtCorreo.Text = respuesta.Correo;
-                        dtpFechaNacimiento.Value = Convert.ToDateTime(respuesta.FechaNacimiento);
-                        var objUbigeo = objServicioUbigeo.DevuelveUbigeo(respuesta.IdUbigeo);
+                        txtNombres.Text = objClienteBE.Nombres;
+                        txtPaterno.Text = objClienteBE.ApellidoPaterno;
+                        txtMaterno.Text = objClienteBE.ApellidoMaterno;
+                        txtDireccion.Text = objClienteBE.Direccion;
+                        txtCorreo.Text = objClienteBE.Correo;
+                        dtpFechaNacimiento.Value = Convert.ToDateTime(objClienteBE.FechaNacimiento);
+                        var objUbigeo = objServicioUbigeo.DevuelveUbigeo(objClienteBE.IdUbigeo);
                         Enlazar(objUbigeo.idDepartamento, objUbigeo.idProvincia, objUbigeo.idDistrito);
-                        txtTelfCasa.Text = respuesta.TelefonoCasa;
-                        txtTelfCelular.Text = respuesta.TelefonoCelular;
+                        txtTelfCasa.Text = objClienteBE.TelefonoCasa;
+                        txtTelfCelular.Text = objClienteBE.TelefonoCelular;
                         txtNombres.Enabled = false;
                         txtMaterno.Enabled = false;
                         txtPaterno.Enabled = false;
@@ -136,10 +137,18 @@ namespace TestEscritorio
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            ClienteBE objClienteBE = new ClienteBE();
-            objClienteBE.ApellidoMaterno = txtMaterno.Text;
-            objClienteBE.ApellidoPaterno = txtPaterno.Text;
-            objClienteBE.ApellidoMaterno = txtMaterno.Text;
+            Boolean retorno = false;
+            if (objClienteBE == null)
+            {
+                objClienteBE = new ClienteBE();
+                objClienteBE.ApellidoMaterno = txtMaterno.Text;
+                objClienteBE.ApellidoPaterno = txtPaterno.Text;
+                objClienteBE.ApellidoMaterno = txtMaterno.Text;
+            }
+            else
+            {
+
+            }
             objClienteBE.Nombres = txtNombres.Text;
             objClienteBE.NroDocumento = txtNroDocumento.Text;
             objClienteBE.Correo = txtCorreo.Text;
@@ -149,15 +158,12 @@ namespace TestEscritorio
             objClienteBE.IdTipoCliente = 1;
             objClienteBE.TelefonoCasa = txtTelfCasa.Text;
             objClienteBE.TelefonoCelular = txtTelfCelular.Text;
-            Boolean retorno = false;
             if (txtNombres.Enabled == true)
             {
                 retorno = objServicioCliente.InsertarCliente(objClienteBE);
             }
             else
             {
-                var cliente = objServicioCliente.DevuelveClientePorDNI(txtNroDocumento.Text);
-                objClienteBE.IdCliente = cliente.IdCliente;
                 retorno = objServicioCliente.ActualizarCliente(objClienteBE);
             }
             if (retorno == true)

@@ -202,6 +202,99 @@ namespace CapaAccesoServicios.ProxyHabitacion {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SedeBE", Namespace="http://schemas.datacontract.org/2004/07/HotelWCF")]
+    [System.SerializableAttribute()]
+    public partial class SedeBE : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DireccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte idSedeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string idUbigeoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Direccion {
+            get {
+                return this.DireccionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DireccionField, value) != true)) {
+                    this.DireccionField = value;
+                    this.RaisePropertyChanged("Direccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte idSede {
+            get {
+                return this.idSedeField;
+            }
+            set {
+                if ((this.idSedeField.Equals(value) != true)) {
+                    this.idSedeField = value;
+                    this.RaisePropertyChanged("idSede");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string idUbigeo {
+            get {
+                return this.idUbigeoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.idUbigeoField, value) != true)) {
+                    this.idUbigeoField = value;
+                    this.RaisePropertyChanged("idUbigeo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProxyHabitacion.IServicioHabitacion")]
     public interface IServicioHabitacion {
@@ -223,6 +316,18 @@ namespace CapaAccesoServicios.ProxyHabitacion {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHabitacion/ListarPrecioHabitacionesPorSede", ReplyAction="http://tempuri.org/IServicioHabitacion/ListarPrecioHabitacionesPorSedeResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE>> ListarPrecioHabitacionesPorSedeAsync(byte IdSede);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHabitacion/DevuelveHabitacion", ReplyAction="http://tempuri.org/IServicioHabitacion/DevuelveHabitacionResponse")]
+        CapaAccesoServicios.ProxyHabitacion.HabitacionBE DevuelveHabitacion(int idHabitacion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHabitacion/DevuelveHabitacion", ReplyAction="http://tempuri.org/IServicioHabitacion/DevuelveHabitacionResponse")]
+        System.Threading.Tasks.Task<CapaAccesoServicios.ProxyHabitacion.HabitacionBE> DevuelveHabitacionAsync(int idHabitacion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHabitacion/ListarSede", ReplyAction="http://tempuri.org/IServicioHabitacion/ListarSedeResponse")]
+        System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.SedeBE> ListarSede();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHabitacion/ListarSede", ReplyAction="http://tempuri.org/IServicioHabitacion/ListarSedeResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.SedeBE>> ListarSedeAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -274,6 +379,22 @@ namespace CapaAccesoServicios.ProxyHabitacion {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.HabitacionBE>> ListarPrecioHabitacionesPorSedeAsync(byte IdSede) {
             return base.Channel.ListarPrecioHabitacionesPorSedeAsync(IdSede);
+        }
+        
+        public CapaAccesoServicios.ProxyHabitacion.HabitacionBE DevuelveHabitacion(int idHabitacion) {
+            return base.Channel.DevuelveHabitacion(idHabitacion);
+        }
+        
+        public System.Threading.Tasks.Task<CapaAccesoServicios.ProxyHabitacion.HabitacionBE> DevuelveHabitacionAsync(int idHabitacion) {
+            return base.Channel.DevuelveHabitacionAsync(idHabitacion);
+        }
+        
+        public System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.SedeBE> ListarSede() {
+            return base.Channel.ListarSede();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyHabitacion.SedeBE>> ListarSedeAsync() {
+            return base.Channel.ListarSedeAsync();
         }
     }
 }

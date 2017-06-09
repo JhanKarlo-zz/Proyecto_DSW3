@@ -20,6 +20,8 @@ namespace HotelWCF
         [OperationContract]
         Boolean ActualizarConsumoReserva(ConsumoBE objConsumoBE);
     }
+    [DataContract]
+    [Serializable]
     public class ConsumoBE
     {
         [DataMember]

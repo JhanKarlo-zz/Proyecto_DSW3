@@ -78,6 +78,30 @@ namespace HotelWCF
             return objClienteBE;
         }
 
+        public List<ClienteBE> FrecuenciaClientes()
+        {
+            List<ClienteBE> objListaClientes = new List<ClienteBE>();
+            var clientes = MiHotel.ListarFrecuenciaCliente();
+            foreach (var resultado in clientes)
+            {
+                ClienteBE objClienteBE = new ClienteBE();
+                objClienteBE.IdCliente = resultado.id_Cliente;
+                objClienteBE.Nombres = resultado.Nombre;
+                objClienteBE.Cantidad = resultado.Cant_Reservas;
+                UbigeoBE objUbigeoBE = new UbigeoBE();
+                objUbigeoBE.idUbigeo = resultado.id_ubigeo;
+                objUbigeoBE.Departamento = resultado.Departamento;
+                objUbigeoBE.Provincia = resultado.Provincia;
+                objUbigeoBE.Distrito = resultado.Distrito;
+                objClienteBE.Ubigeo = objUbigeoBE;
+                objClienteBE.Reservado = resultado.Reservado;
+                objClienteBE.Pagado = resultado.Pagado;
+                objClienteBE.Anulado = resultado.Anulado;
+                objListaClientes.Add(objClienteBE);
+            }
+            return objListaClientes;
+        }
+
         public bool InsertarCliente(ClienteBE objClienteBE)
         {
             Boolean retorno = false;

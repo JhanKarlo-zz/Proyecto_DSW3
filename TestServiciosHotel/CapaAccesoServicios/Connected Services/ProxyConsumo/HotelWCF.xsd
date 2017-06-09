@@ -9,6 +9,7 @@
   <xs:complexType name="ConsumoBE">
     <xs:sequence>
       <xs:element minOccurs="0" name="Cantidad" type="xs:short" />
+      <xs:element minOccurs="0" name="DescripcionEstado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="IdConsumo" type="xs:short" />
       <xs:element minOccurs="0" name="IdEstadoConsumo" type="xs:unsignedByte" />

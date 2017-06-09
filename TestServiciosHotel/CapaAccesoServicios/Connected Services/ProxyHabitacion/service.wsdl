@@ -25,6 +25,18 @@
   <wsdl:message name="IServicioHabitacion_ListarPrecioHabitacionesPorSede_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarPrecioHabitacionesPorSedeResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioHabitacion_DevuelveHabitacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:DevuelveHabitacion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioHabitacion_DevuelveHabitacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DevuelveHabitacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioHabitacion_ListarSede_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarSede" />
+  </wsdl:message>
+  <wsdl:message name="IServicioHabitacion_ListarSede_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarSedeResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServicioHabitacion">
     <wsdl:operation name="ListarHabitacionPorFecha">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioHabitacion/ListarHabitacionPorFecha" message="tns:IServicioHabitacion_ListarHabitacionPorFecha_InputMessage" />
@@ -37,6 +49,14 @@
     <wsdl:operation name="ListarPrecioHabitacionesPorSede">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioHabitacion/ListarPrecioHabitacionesPorSede" message="tns:IServicioHabitacion_ListarPrecioHabitacionesPorSede_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioHabitacion/ListarPrecioHabitacionesPorSedeResponse" message="tns:IServicioHabitacion_ListarPrecioHabitacionesPorSede_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DevuelveHabitacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioHabitacion/DevuelveHabitacion" message="tns:IServicioHabitacion_DevuelveHabitacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioHabitacion/DevuelveHabitacionResponse" message="tns:IServicioHabitacion_DevuelveHabitacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarSede">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioHabitacion/ListarSede" message="tns:IServicioHabitacion_ListarSede_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioHabitacion/ListarSedeResponse" message="tns:IServicioHabitacion_ListarSede_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicioHabitacion" type="tns:IServicioHabitacion">
@@ -61,6 +81,24 @@
     </wsdl:operation>
     <wsdl:operation name="ListarPrecioHabitacionesPorSede">
       <soap:operation soapAction="http://tempuri.org/IServicioHabitacion/ListarPrecioHabitacionesPorSede" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DevuelveHabitacion">
+      <soap:operation soapAction="http://tempuri.org/IServicioHabitacion/DevuelveHabitacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarSede">
+      <soap:operation soapAction="http://tempuri.org/IServicioHabitacion/ListarSede" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

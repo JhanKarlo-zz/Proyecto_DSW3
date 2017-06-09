@@ -26,6 +26,9 @@ namespace CapaAccesoServicios.ProxyConsumo {
         private short CantidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionEstadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime FechaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -59,6 +62,19 @@ namespace CapaAccesoServicios.ProxyConsumo {
                 if ((this.CantidadField.Equals(value) != true)) {
                     this.CantidadField = value;
                     this.RaisePropertyChanged("Cantidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DescripcionEstado {
+            get {
+                return this.DescripcionEstadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionEstadoField, value) != true)) {
+                    this.DescripcionEstadoField = value;
+                    this.RaisePropertyChanged("DescripcionEstado");
                 }
             }
         }
