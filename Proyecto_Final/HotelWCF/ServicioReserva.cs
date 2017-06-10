@@ -57,6 +57,7 @@ namespace HotelWCF
                     objReservaBE.FechaInicioReserva = resultado.Fecha_Inicio_Reserva;
                     objReservaBE.FechaFinReserva = resultado.Fecha_Fin_Reserva;
                     objReservaBE.FechaRegistro = resultado.Fecha_Registro;
+                    objReservaBE.DescripcionEstadoReserva = objReservaBE.DevuelveDescripcionEstado(objReservaBE.IdEstadoReserva);
                     objListaReserva.Add(objReservaBE);
                 }
             }
@@ -98,6 +99,22 @@ namespace HotelWCF
             try
             {
                 var query = MiHotel.ListarReservaPorFechaEstado(FechaInicio,FechaFinal,idEstadoReserva);
+                foreach (var resultado in query)
+                {
+                    ReservaBE objReservaBE = new ReservaBE();
+                    objReservaBE.IdReserva = resultado.id_Reserva;
+                    objReservaBE.IdCliente = resultado.id_Cliente;
+                    objReservaBE.NombreCliente = resultado.Nombre;
+                    objReservaBE.IdEstadoReserva = resultado.id_Estado_Reserva;
+                    objReservaBE.IdHabitacion = resultado.id_Habitacion;
+                    objReservaBE.FechaIngreso = resultado.Fecha_Ingreso;
+                    objReservaBE.FechaSalida = resultado.Fecha_Salida;
+                    objReservaBE.FechaInicioReserva = resultado.Fecha_Inicio_Reserva;
+                    objReservaBE.FechaFinReserva = resultado.Fecha_Fin_Reserva;
+                    objReservaBE.FechaRegistro = resultado.Fecha_Registro;
+                    objReservaBE.DescripcionEstadoReserva = objReservaBE.DevuelveDescripcionEstado(objReservaBE.IdEstadoReserva);
+                    objListaReserva.Add(objReservaBE);
+                }
             }
             catch (Exception)
             {

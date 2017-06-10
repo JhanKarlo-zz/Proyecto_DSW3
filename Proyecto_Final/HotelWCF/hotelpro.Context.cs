@@ -39,22 +39,12 @@ namespace HotelWCF
         public DbSet<Sede> Sede { get; set; }
         public DbSet<Ubigeo> Ubigeo { get; set; }
     
-        public virtual ObjectResult<USP_Listar_Frecuencia_Cliente_Result> USP_Listar_Frecuencia_Cliente()
+        public virtual ObjectResult<USP_Listar_Frecuencia_Cliente2_Result> ListarFrecuenciaCliente()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_Listar_Frecuencia_Cliente_Result>("USP_Listar_Frecuencia_Cliente");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_Listar_Frecuencia_Cliente2_Result>("ListarFrecuenciaCliente");
         }
     
-        public virtual ObjectResult<USP_Listar_Frecuencia_Cliente_Result> ListarFrecuenciaCliente()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_Listar_Frecuencia_Cliente_Result>("ListarFrecuenciaCliente");
-        }
-    
-        public virtual ObjectResult<USP_Listar_Frecuencia_Cliente_Result> USP_Listar_Frecuencia_Cliente1()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_Listar_Frecuencia_Cliente_Result>("USP_Listar_Frecuencia_Cliente1");
-        }
-    
-        public virtual ObjectResult<USP_Listar_Reserva_Por_Fecha_Estado_Result> USP_Listar_Reserva_Por_Fecha_Estado(Nullable<System.DateTime> inicio, Nullable<System.DateTime> fin, Nullable<int> id_Estado)
+        public virtual ObjectResult<USP_Listar_Reserva_Por_Fecha_Estado1_Result> ListarReservaPorFechaEstado(Nullable<System.DateTime> inicio, Nullable<System.DateTime> fin, Nullable<int> id_Estado)
         {
             var inicioParameter = inicio.HasValue ?
                 new ObjectParameter("inicio", inicio) :
@@ -68,24 +58,7 @@ namespace HotelWCF
                 new ObjectParameter("id_Estado", id_Estado) :
                 new ObjectParameter("id_Estado", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_Listar_Reserva_Por_Fecha_Estado_Result>("USP_Listar_Reserva_Por_Fecha_Estado", inicioParameter, finParameter, id_EstadoParameter);
-        }
-    
-        public virtual ObjectResult<USP_Listar_Reserva_Por_Fecha_Estado_Result> ListarReservaPorFechaEstado(Nullable<System.DateTime> inicio, Nullable<System.DateTime> fin, Nullable<int> id_Estado)
-        {
-            var inicioParameter = inicio.HasValue ?
-                new ObjectParameter("inicio", inicio) :
-                new ObjectParameter("inicio", typeof(System.DateTime));
-    
-            var finParameter = fin.HasValue ?
-                new ObjectParameter("fin", fin) :
-                new ObjectParameter("fin", typeof(System.DateTime));
-    
-            var id_EstadoParameter = id_Estado.HasValue ?
-                new ObjectParameter("id_Estado", id_Estado) :
-                new ObjectParameter("id_Estado", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_Listar_Reserva_Por_Fecha_Estado_Result>("ListarReservaPorFechaEstado", inicioParameter, finParameter, id_EstadoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_Listar_Reserva_Por_Fecha_Estado1_Result>("ListarReservaPorFechaEstado", inicioParameter, finParameter, id_EstadoParameter);
         }
     }
 }

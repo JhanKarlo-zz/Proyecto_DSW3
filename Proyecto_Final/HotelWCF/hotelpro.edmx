@@ -630,15 +630,8 @@
             <End Role="Ubigeo" EntitySet="Ubigeo" />
             <End Role="Sede" EntitySet="Sede" />
           </AssociationSet>
-          <FunctionImport Name="USP_Listar_Frecuencia_Cliente" ReturnType="Collection(hotelproModel.USP_Listar_Frecuencia_Cliente_Result)" />
-          <FunctionImport Name="ListarFrecuenciaCliente" ReturnType="Collection(hotelproModel.USP_Listar_Frecuencia_Cliente_Result)" />
-          <FunctionImport Name="USP_Listar_Frecuencia_Cliente1" ReturnType="Collection(hotelproModel.USP_Listar_Frecuencia_Cliente_Result)" />
-          <FunctionImport Name="USP_Listar_Reserva_Por_Fecha_Estado" ReturnType="Collection(hotelproModel.USP_Listar_Reserva_Por_Fecha_Estado_Result)">
-            <Parameter Name="inicio" Mode="In" Type="DateTime" />
-            <Parameter Name="fin" Mode="In" Type="DateTime" />
-            <Parameter Name="id_Estado" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="ListarReservaPorFechaEstado" ReturnType="Collection(hotelproModel.USP_Listar_Reserva_Por_Fecha_Estado_Result)">
+          <FunctionImport Name="ListarFrecuenciaCliente" ReturnType="Collection(hotelproModel.USP_Listar_Frecuencia_Cliente2_Result)" />
+          <FunctionImport Name="ListarReservaPorFechaEstado" ReturnType="Collection(hotelproModel.USP_Listar_Reserva_Por_Fecha_Estado1_Result)">
             <Parameter Name="inicio" Mode="In" Type="DateTime" />
             <Parameter Name="fin" Mode="In" Type="DateTime" />
             <Parameter Name="id_Estado" Mode="In" Type="Int32" />
@@ -666,6 +659,30 @@
           <Property Type="DateTime" Name="Fecha_Salida" Nullable="true" />
           <Property Type="DateTime" Name="Fecha_Inicio_Reserva" Nullable="false" />
           <Property Type="DateTime" Name="Fecha_Fin_Reserva" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="USP_Listar_Frecuencia_Cliente2_Result">
+          <Property Type="Int32" Name="Cant_Reservas" Nullable="true" />
+          <Property Type="Int32" Name="id_Cliente" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="162" />
+          <Property Type="String" Name="id_ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Reservado" Nullable="true" />
+          <Property Type="Int32" Name="Pagado" Nullable="true" />
+          <Property Type="Int32" Name="Anulado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_Listar_Reserva_Por_Fecha_Estado1_Result">
+          <Property Type="Int16" Name="id_Reserva" Nullable="false" />
+          <Property Type="Int32" Name="id_Cliente" Nullable="false" />
+          <Property Type="Int16" Name="id_Habitacion" Nullable="false" />
+          <Property Type="Byte" Name="id_Estado_Reserva" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Registro" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Ingreso" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha_Salida" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha_Inicio_Reserva" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Fin_Reserva" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="162" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -804,70 +821,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="USP_Listar_Frecuencia_Cliente" FunctionName="hotelproModel.Store.USP_Listar_Frecuencia_Cliente">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="hotelproModel.USP_Listar_Frecuencia_Cliente_Result">
-                <ScalarProperty Name="Cant_Reservas" ColumnName="Cant_Reservas" />
-                <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
-                <ScalarProperty Name="Reservado" ColumnName="Reservado" />
-                <ScalarProperty Name="Pagado" ColumnName="Pagado" />
-                <ScalarProperty Name="Anulado" ColumnName="Anulado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ListarFrecuenciaCliente" FunctionName="hotelproModel.Store.USP_Listar_Frecuencia_Cliente">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="hotelproModel.USP_Listar_Frecuencia_Cliente_Result">
+              <ComplexTypeMapping TypeName="hotelproModel.USP_Listar_Frecuencia_Cliente2_Result">
                 <ScalarProperty Name="Cant_Reservas" ColumnName="Cant_Reservas" />
                 <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
-                <ScalarProperty Name="Reservado" ColumnName="Reservado" />
-                <ScalarProperty Name="Pagado" ColumnName="Pagado" />
-                <ScalarProperty Name="Anulado" ColumnName="Anulado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="USP_Listar_Frecuencia_Cliente1" FunctionName="hotelproModel.Store.USP_Listar_Frecuencia_Cliente">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="hotelproModel.USP_Listar_Frecuencia_Cliente_Result">
-                <ScalarProperty Name="Cant_Reservas" ColumnName="Cant_Reservas" />
-                <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
-                <ScalarProperty Name="Reservado" ColumnName="Reservado" />
-                <ScalarProperty Name="Pagado" ColumnName="Pagado" />
-                <ScalarProperty Name="Anulado" ColumnName="Anulado" />
                 <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="USP_Listar_Reserva_Por_Fecha_Estado" FunctionName="hotelproModel.Store.USP_Listar_Reserva_Por_Fecha_Estado">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="hotelproModel.USP_Listar_Reserva_Por_Fecha_Estado_Result">
-                <ScalarProperty Name="id_Reserva" ColumnName="id_Reserva" />
-                <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
-                <ScalarProperty Name="id_Habitacion" ColumnName="id_Habitacion" />
-                <ScalarProperty Name="id_Estado_Reserva" ColumnName="id_Estado_Reserva" />
-                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
-                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
-                <ScalarProperty Name="Fecha_Salida" ColumnName="Fecha_Salida" />
-                <ScalarProperty Name="Fecha_Inicio_Reserva" ColumnName="Fecha_Inicio_Reserva" />
-                <ScalarProperty Name="Fecha_Fin_Reserva" ColumnName="Fecha_Fin_Reserva" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Reservado" ColumnName="Reservado" />
+                <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+                <ScalarProperty Name="Anulado" ColumnName="Anulado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ListarReservaPorFechaEstado" FunctionName="hotelproModel.Store.USP_Listar_Reserva_Por_Fecha_Estado">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="hotelproModel.USP_Listar_Reserva_Por_Fecha_Estado_Result">
+              <ComplexTypeMapping TypeName="hotelproModel.USP_Listar_Reserva_Por_Fecha_Estado1_Result">
                 <ScalarProperty Name="id_Reserva" ColumnName="id_Reserva" />
                 <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
                 <ScalarProperty Name="id_Habitacion" ColumnName="id_Habitacion" />
@@ -877,10 +849,11 @@
                 <ScalarProperty Name="Fecha_Salida" ColumnName="Fecha_Salida" />
                 <ScalarProperty Name="Fecha_Inicio_Reserva" ColumnName="Fecha_Inicio_Reserva" />
                 <ScalarProperty Name="Fecha_Fin_Reserva" ColumnName="Fecha_Fin_Reserva" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
