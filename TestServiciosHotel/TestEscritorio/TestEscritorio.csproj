@@ -32,8 +32,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +53,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BD_Test.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD_Test.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD_Test.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD_Test.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD_Test.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD_Test.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente.cs">
+      <DependentUpon>BD_Test.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClienteBL.cs" />
     <Compile Include="frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +92,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reserva.cs">
+      <DependentUpon>BD_Test.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReservaBL.cs" />
+    <Compile Include="Ubigeo.cs">
+      <DependentUpon>BD_Test.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ubigeo_Nacional.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,6 +126,14 @@
     <EmbeddedResource Include="Ubigeo_Nacional.resx">
       <DependentUpon>Ubigeo_Nacional.cs</DependentUpon>
     </EmbeddedResource>
+    <EntityDeploy Include="BD_Test.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BD_Test.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BD_Test.edmx.diagram">
+      <DependentUpon>BD_Test.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -110,6 +152,21 @@
       <Project>{22E1D4E0-27E9-48B9-B531-58788DE0430E}</Project>
       <Name>CapaAccesoServicios</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BD_Test.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BD_Test.edmx</DependentUpon>
+      <LastGenOutput>BD_Test.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BD_Test.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BD_Test.edmx</DependentUpon>
+      <LastGenOutput>BD_Test.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

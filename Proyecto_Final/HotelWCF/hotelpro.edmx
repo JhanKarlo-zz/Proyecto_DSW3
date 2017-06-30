@@ -129,7 +129,7 @@
           <Property Name="idProvincia" Type="char" MaxLength="2" />
           <Property Name="idDistrito" Type="char" MaxLength="2" />
         </EntityType>
-        <Association Name="FK__Cliente__id_Ubig__6D0D32F4">
+        <Association Name="FK__Cliente__id_Ubig__108B795B">
           <End Role="Ubigeo" Type="Self.Ubigeo" Multiplicity="1" />
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -141,7 +141,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Consumo__id_Prod__6E01572D">
+        <Association Name="FK__Consumo__id_Prod__117F9D94">
           <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
           <End Role="Consumo" Type="Self.Consumo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -153,7 +153,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Consumo__id_Rese__06CD04F7">
+        <Association Name="FK__Consumo__id_Rese__1273C1CD">
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
           <End Role="Consumo" Type="Self.Consumo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -165,7 +165,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Documento__id_Re__03F0984C">
+        <Association Name="FK__Documento__id_Re__1367E606">
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
           <End Role="Documento" Type="Self.Documento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -177,7 +177,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Documento_Detall__73BA3083">
+        <Association Name="FK__Documento_Detall__145C0A3F">
           <End Role="Documento" Type="Self.Documento" Multiplicity="1" />
           <End Role="Documento_Detalle" Type="Self.Documento_Detalle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -191,7 +191,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Habitacio__id_Se__6FE99F9F">
+        <Association Name="FK__Habitacio__id_Se__15502E78">
           <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
           <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -203,7 +203,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Precio_Es__id_Ha__6EF57B66">
+        <Association Name="FK__Precio_Es__id_Ha__164452B1">
           <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="1" />
           <End Role="Precio_Especial" Type="Self.Precio_Especial" Multiplicity="*" />
           <ReferentialConstraint>
@@ -215,7 +215,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reserva__id_Clie__70DDC3D8">
+        <Association Name="FK__Reserva__id_Clie__173876EA">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
           <ReferentialConstraint>
@@ -227,7 +227,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reserva__id_Habi__71D1E811">
+        <Association Name="FK__Reserva__id_Habi__182C9B23">
           <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
           <ReferentialConstraint>
@@ -239,7 +239,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sede__id_Ubigeo__6C190EBB">
+        <Association Name="FK__Sede__id_Ubigeo__1920BF5C">
           <End Role="Ubigeo" Type="Self.Ubigeo" Multiplicity="1" />
           <End Role="Sede" Type="Self.Sede" Multiplicity="*" />
           <ReferentialConstraint>
@@ -252,11 +252,6 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="USP_Listar_Frecuencia_Cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="USP_Listar_Reserva_Por_Fecha_Estado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="inicio" Type="date" Mode="In" />
-          <Parameter Name="fin" Type="date" Mode="In" />
-          <Parameter Name="id_Estado" Type="int" Mode="In" />
-        </Function>
         <EntityContainer Name="hotelproModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Consumo" EntityType="Self.Consumo" Schema="dbo" store:Type="Tables" />
@@ -268,43 +263,43 @@
           <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sede" EntityType="Self.Sede" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ubigeo" EntityType="Self.Ubigeo" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Cliente__id_Ubig__6D0D32F4" Association="Self.FK__Cliente__id_Ubig__6D0D32F4">
+          <AssociationSet Name="FK__Cliente__id_Ubig__108B795B" Association="Self.FK__Cliente__id_Ubig__108B795B">
             <End Role="Ubigeo" EntitySet="Ubigeo" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Consumo__id_Prod__6E01572D" Association="Self.FK__Consumo__id_Prod__6E01572D">
+          <AssociationSet Name="FK__Consumo__id_Prod__117F9D94" Association="Self.FK__Consumo__id_Prod__117F9D94">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Consumo" EntitySet="Consumo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Consumo__id_Rese__06CD04F7" Association="Self.FK__Consumo__id_Rese__06CD04F7">
+          <AssociationSet Name="FK__Consumo__id_Rese__1273C1CD" Association="Self.FK__Consumo__id_Rese__1273C1CD">
             <End Role="Reserva" EntitySet="Reserva" />
             <End Role="Consumo" EntitySet="Consumo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Documento__id_Re__03F0984C" Association="Self.FK__Documento__id_Re__03F0984C">
+          <AssociationSet Name="FK__Documento__id_Re__1367E606" Association="Self.FK__Documento__id_Re__1367E606">
             <End Role="Reserva" EntitySet="Reserva" />
             <End Role="Documento" EntitySet="Documento" />
           </AssociationSet>
-          <AssociationSet Name="FK__Documento_Detall__73BA3083" Association="Self.FK__Documento_Detall__73BA3083">
+          <AssociationSet Name="FK__Documento_Detall__145C0A3F" Association="Self.FK__Documento_Detall__145C0A3F">
             <End Role="Documento" EntitySet="Documento" />
             <End Role="Documento_Detalle" EntitySet="Documento_Detalle" />
           </AssociationSet>
-          <AssociationSet Name="FK__Habitacio__id_Se__6FE99F9F" Association="Self.FK__Habitacio__id_Se__6FE99F9F">
+          <AssociationSet Name="FK__Habitacio__id_Se__15502E78" Association="Self.FK__Habitacio__id_Se__15502E78">
             <End Role="Sede" EntitySet="Sede" />
             <End Role="Habitacion" EntitySet="Habitacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Precio_Es__id_Ha__6EF57B66" Association="Self.FK__Precio_Es__id_Ha__6EF57B66">
+          <AssociationSet Name="FK__Precio_Es__id_Ha__164452B1" Association="Self.FK__Precio_Es__id_Ha__164452B1">
             <End Role="Habitacion" EntitySet="Habitacion" />
             <End Role="Precio_Especial" EntitySet="Precio_Especial" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reserva__id_Clie__70DDC3D8" Association="Self.FK__Reserva__id_Clie__70DDC3D8">
+          <AssociationSet Name="FK__Reserva__id_Clie__173876EA" Association="Self.FK__Reserva__id_Clie__173876EA">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reserva__id_Habi__71D1E811" Association="Self.FK__Reserva__id_Habi__71D1E811">
+          <AssociationSet Name="FK__Reserva__id_Habi__182C9B23" Association="Self.FK__Reserva__id_Habi__182C9B23">
             <End Role="Habitacion" EntitySet="Habitacion" />
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sede__id_Ubigeo__6C190EBB" Association="Self.FK__Sede__id_Ubigeo__6C190EBB">
+          <AssociationSet Name="FK__Sede__id_Ubigeo__1920BF5C" Association="Self.FK__Sede__id_Ubigeo__1920BF5C">
             <End Role="Ubigeo" EntitySet="Ubigeo" />
             <End Role="Sede" EntitySet="Sede" />
           </AssociationSet>
@@ -834,22 +829,6 @@
                 <ScalarProperty Name="Reservado" ColumnName="Reservado" />
                 <ScalarProperty Name="Pagado" ColumnName="Pagado" />
                 <ScalarProperty Name="Anulado" ColumnName="Anulado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ListarReservaPorFechaEstado" FunctionName="hotelproModel.Store.USP_Listar_Reserva_Por_Fecha_Estado">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="hotelproModel.USP_Listar_Reserva_Por_Fecha_Estado1_Result">
-                <ScalarProperty Name="id_Reserva" ColumnName="id_Reserva" />
-                <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
-                <ScalarProperty Name="id_Habitacion" ColumnName="id_Habitacion" />
-                <ScalarProperty Name="id_Estado_Reserva" ColumnName="id_Estado_Reserva" />
-                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
-                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
-                <ScalarProperty Name="Fecha_Salida" ColumnName="Fecha_Salida" />
-                <ScalarProperty Name="Fecha_Inicio_Reserva" ColumnName="Fecha_Inicio_Reserva" />
-                <ScalarProperty Name="Fecha_Fin_Reserva" ColumnName="Fecha_Fin_Reserva" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

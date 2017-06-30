@@ -17,7 +17,9 @@ namespace TestEscritorio
     {
         ServiciosUbigeo objServicioUbigeo = new ServiciosUbigeo();
         ServiciosCliente objServicioCliente = new ServiciosCliente();
-        public ClienteBE objClienteBE { get; set; }
+        ClienteBL objClienteBL = new ClienteBL();
+        public ClienteBE objClienteServBE { get; set; }
+        public Cliente objClienteT { get; set; }
         public frmCliente()
         {
             InitializeComponent();
@@ -84,8 +86,8 @@ namespace TestEscritorio
                 {
                     grbValidacion.Enabled = false;
                     grbDatos.Enabled = true;
-                    objClienteBE = objServicioCliente.DevuelveClientePorDNI(txtNroDocumento.Text);
-                    if (objClienteBE == null)
+                    objClienteT = objClienteBL.DevuelveClienteDNI(txtNroDocumento.Text);
+                    if (objClienteT == null)
                     {
                         MessageBox.Show("Cliente no existe, porfavor llenar los datos");
                         txtNombres.Enabled = true;
@@ -94,17 +96,14 @@ namespace TestEscritorio
                     }
                     else
                     {
-                        MessageBox.Show("Cliente registrado");
-                        txtNombres.Text = objClienteBE.Nombres;
-                        txtPaterno.Text = objClienteBE.ApellidoPaterno;
-                        txtMaterno.Text = objClienteBE.ApellidoMaterno;
-                        txtDireccion.Text = objClienteBE.Direccion;
-                        txtCorreo.Text = objClienteBE.Correo;
-                        dtpFechaNacimiento.Value = Convert.ToDateTime(objClienteBE.FechaNacimiento);
-                        var objUbigeo = objServicioUbigeo.DevuelveUbigeo(objClienteBE.IdUbigeo);
+                        txtNombres.Text = objClienteT.Nombres;
+                        txtPaterno.Text = objClienteT.Apellido_Paterno;
+                        txtMaterno.Text = objClienteT.Apellido_Materno;
+                        txtDireccion.Text = objClienteT.Direccion;
+                        txtCorreo.Text = objClienteT.Correo;
+                        var objUbigeo = objServicioUbigeo.DevuelveUbigeo(objClienteT.id_Ubigeo);
                         Enlazar(objUbigeo.idDepartamento, objUbigeo.idProvincia, objUbigeo.idDistrito);
-                        txtTelfCasa.Text = objClienteBE.TelefonoCasa;
-                        txtTelfCelular.Text = objClienteBE.TelefonoCelular;
+                        txtTelfCelular.Text = objClienteT.Telefono;
                         txtNombres.Enabled = false;
                         txtMaterno.Enabled = false;
                         txtPaterno.Enabled = false;
@@ -121,12 +120,12 @@ namespace TestEscritorio
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //Limpiar
             txtNombres.Text = "";
             txtPaterno.Text = "";
             txtMaterno.Text = "";
             txtDireccion.Text = "";
             txtCorreo.Text = "";
-            dtpFechaNacimiento.Value = DateTime.Now;
             Enlazar("15", "01", "01");
             txtNombres.Enabled = true;
             txtMaterno.Enabled = true;
@@ -138,33 +137,27 @@ namespace TestEscritorio
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             Boolean retorno = false;
-            if (objClienteBE == null)
+            if (objClienteT == null)
             {
-                objClienteBE = new ClienteBE();
-                objClienteBE.ApellidoMaterno = txtMaterno.Text;
-                objClienteBE.ApellidoPaterno = txtPaterno.Text;
-                objClienteBE.ApellidoMaterno = txtMaterno.Text;
+                objClienteT = new Cliente();
+                objClienteT.Apellido_Materno = txtMaterno.Text;
+                objClienteT.Apellido_Paterno = txtPaterno.Text;
+                objClienteT.Nombres = txtMaterno.Text;
+                objClienteT.Nombres = txtNombres.Text;
+                objClienteT.NroDocumento = txtNroDocumento.Text;
+                objClienteT.Correo = txtCorreo.Text;
+                objClienteT.Direccion = txtDireccion.Text;
+                objClienteT.id_Ubigeo = cboDepartamento.SelectedValue.ToString() + "" + cboProvincia.SelectedValue.ToString() + "" + cboDistrito.SelectedValue.ToString();
+                objClienteT.Telefono = txtTelfCelular.Text;
             }
-            else
-            {
 
-            }
-            objClienteBE.Nombres = txtNombres.Text;
-            objClienteBE.NroDocumento = txtNroDocumento.Text;
-            objClienteBE.Correo = txtCorreo.Text;
-            objClienteBE.Direccion = txtDireccion.Text;
-            objClienteBE.FechaNacimiento = Convert.ToDateTime(dtpFechaNacimiento.Value.Date);
-            objClienteBE.IdUbigeo = cboDepartamento.SelectedValue.ToString() + "" + cboProvincia.SelectedValue.ToString() + "" + cboDistrito.SelectedValue.ToString();
-            objClienteBE.IdTipoCliente = 1;
-            objClienteBE.TelefonoCasa = txtTelfCasa.Text;
-            objClienteBE.TelefonoCelular = txtTelfCelular.Text;
             if (txtNombres.Enabled == true)
             {
-                retorno = objServicioCliente.InsertarCliente(objClienteBE);
+                retorno = objClienteBL.InsertarCliente(objClienteT);
             }
             else
             {
-                retorno = objServicioCliente.ActualizarCliente(objClienteBE);
+                retorno = objClienteBL.ActualizarCliente(objClienteT);
             }
             if (retorno == true)
             {

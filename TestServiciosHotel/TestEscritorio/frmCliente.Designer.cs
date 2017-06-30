@@ -47,17 +47,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.grbDatos = new System.Windows.Forms.GroupBox();
+            this.txtTelfCelular = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtTelfCasa = new System.Windows.Forms.TextBox();
-            this.txtTelfCelular = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.grbValidacion.SuspendLayout();
             this.grbDatos.SuspendLayout();
@@ -236,23 +232,6 @@
             this.label8.TabIndex = 35;
             this.label8.Text = "Dirección:";
             // 
-            // dtpFechaNacimiento
-            // 
-            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(108, 236);
-            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(80, 20);
-            this.dtpFechaNacimiento.TabIndex = 36;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 242);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 13);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "Fecha Nac.";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -272,17 +251,13 @@
             // grbDatos
             // 
             this.grbDatos.Controls.Add(this.txtTelfCelular);
-            this.grbDatos.Controls.Add(this.txtTelfCasa);
             this.grbDatos.Controls.Add(this.label12);
-            this.grbDatos.Controls.Add(this.label11);
             this.grbDatos.Controls.Add(this.label5);
             this.grbDatos.Controls.Add(this.txtCorreo);
             this.grbDatos.Controls.Add(this.groupBox1);
             this.grbDatos.Controls.Add(this.label10);
             this.grbDatos.Controls.Add(this.txtNombres);
-            this.grbDatos.Controls.Add(this.label9);
             this.grbDatos.Controls.Add(this.label6);
-            this.grbDatos.Controls.Add(this.dtpFechaNacimiento);
             this.grbDatos.Controls.Add(this.txtPaterno);
             this.grbDatos.Controls.Add(this.txtDireccion);
             this.grbDatos.Controls.Add(this.label7);
@@ -294,6 +269,23 @@
             this.grbDatos.TabIndex = 39;
             this.grbDatos.TabStop = false;
             this.grbDatos.Text = "Datos";
+            // 
+            // txtTelfCelular
+            // 
+            this.txtTelfCelular.Location = new System.Drawing.Point(252, 198);
+            this.txtTelfCelular.MaxLength = 11;
+            this.txtTelfCelular.Name = "txtTelfCelular";
+            this.txtTelfCelular.Size = new System.Drawing.Size(100, 20);
+            this.txtTelfCelular.TabIndex = 41;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(263, 182);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(87, 13);
+            this.label12.TabIndex = 40;
+            this.label12.Text = "Teléfono Celular:";
             // 
             // btnLimpiar
             // 
@@ -314,40 +306,6 @@
             this.btnGrabar.Text = "Grabar";
             this.btnGrabar.UseVisualStyleBackColor = true;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(263, 138);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 13);
-            this.label11.TabIndex = 39;
-            this.label11.Text = "Teléfono casa:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(263, 182);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(87, 13);
-            this.label12.TabIndex = 40;
-            this.label12.Text = "Teléfono Celular:";
-            // 
-            // txtTelfCasa
-            // 
-            this.txtTelfCasa.Location = new System.Drawing.Point(252, 153);
-            this.txtTelfCasa.MaxLength = 11;
-            this.txtTelfCasa.Name = "txtTelfCasa";
-            this.txtTelfCasa.Size = new System.Drawing.Size(100, 20);
-            this.txtTelfCasa.TabIndex = 28;
-            // 
-            // txtTelfCelular
-            // 
-            this.txtTelfCelular.Location = new System.Drawing.Point(252, 198);
-            this.txtTelfCelular.MaxLength = 11;
-            this.txtTelfCelular.Name = "txtTelfCelular";
-            this.txtTelfCelular.Size = new System.Drawing.Size(100, 20);
-            this.txtTelfCelular.TabIndex = 41;
             // 
             // frmCliente
             // 
@@ -392,17 +350,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.GroupBox grbDatos;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnGrabar;
         private System.Windows.Forms.TextBox txtTelfCelular;
-        private System.Windows.Forms.TextBox txtTelfCasa;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
     }
 }
 
