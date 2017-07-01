@@ -25,5 +25,14 @@ namespace TestEscritorio
 
             frmReservaR.Show();
         }
+
+        private void pagoDeReservaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReservaPago frmReservaP = new frmReservaPago();
+
+            frmReservaP.MdiParent = this;
+
+            frmReservaP.Show();
+        }
     }
 }

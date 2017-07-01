@@ -29,6 +29,12 @@ namespace HotelWCF
         public Nullable<System.DateTime> Fecha_Salida { get; set; }
         public System.DateTime Fecha_Inicio_Reserva { get; set; }
         public System.DateTime Fecha_Fin_Reserva { get; set; }
+        public Nullable<bool> Agencia { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
+        public string Nombres { get; set; }
+        public string NroDocumentoCliente { get; set; }
+        public Nullable<short> id_Reserva_Aux { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         public virtual ICollection<Consumo> Consumo { get; set; }

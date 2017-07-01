@@ -105,6 +105,12 @@
           <Property Name="Fecha_Salida" Type="date" />
           <Property Name="Fecha_Inicio_Reserva" Type="date" Nullable="false" />
           <Property Name="Fecha_Fin_Reserva" Type="date" Nullable="false" />
+          <Property Name="Agencia" Type="bit" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="60" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="60" />
+          <Property Name="Nombres" Type="varchar" MaxLength="60" />
+          <Property Name="NroDocumentoCliente" Type="varchar" MaxLength="15" />
+          <Property Name="id_Reserva_Aux" Type="smallint" />
         </EntityType>
         <EntityType Name="Sede">
           <Key>
@@ -424,6 +430,12 @@
           <NavigationProperty Name="Consumo" Relationship="Self.FK__Consumo__id_Rese__06CD04F7" FromRole="Reserva" ToRole="Consumo" />
           <NavigationProperty Name="Documento" Relationship="Self.FK__Documento__id_Re__03F0984C" FromRole="Reserva" ToRole="Documento" />
           <NavigationProperty Name="Habitacion" Relationship="Self.FK__Reserva__id_Habi__71D1E811" FromRole="Reserva" ToRole="Habitacion" />
+          <Property Name="Agencia" Type="Boolean" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Nombres" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="NroDocumentoCliente" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="id_Reserva_Aux" Type="Int16" />
         </EntityType>
         <EntityType Name="Sede">
           <Key>
@@ -779,6 +791,12 @@
           <EntitySetMapping Name="Reserva">
             <EntityTypeMapping TypeName="hotelproModel.Reserva">
               <MappingFragment StoreEntitySet="Reserva">
+                <ScalarProperty Name="id_Reserva_Aux" ColumnName="id_Reserva_Aux" />
+                <ScalarProperty Name="NroDocumentoCliente" ColumnName="NroDocumentoCliente" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="Agencia" ColumnName="Agencia" />
                 <ScalarProperty Name="id_Reserva" ColumnName="id_Reserva" />
                 <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
                 <ScalarProperty Name="id_Habitacion" ColumnName="id_Habitacion" />

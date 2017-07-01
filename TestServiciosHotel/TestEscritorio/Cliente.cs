@@ -28,7 +28,6 @@ namespace TestEscritorio
         public string Telefono { get; set; }
         public string Direccion { get; set; }
         public string id_Ubigeo { get; set; }
-        public Nullable<byte> id_Tipo_Cliente { get; set; }
     
         public virtual Ubigeo Ubigeo { get; set; }
         public virtual ICollection<Reserva> Reserva { get; set; }

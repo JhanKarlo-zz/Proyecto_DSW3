@@ -59,7 +59,7 @@
                     <asp:BoundField DataField="FechaSalida" HeaderText="Fecha Salida" Visible="False" />
                     <asp:BoundField DataField="IdCliente" HeaderText="IdCliente" Visible="False" />
                     <asp:BoundField DataField="IdEstadoReserva" HeaderText="IdEstadoReserva" Visible="False" />
-                    <asp:BoundField DataField="IdHabitacion" HeaderText="IdHabitacion" Visible="False" />
+                    <asp:BoundField DataField="IdHabitacion" HeaderText="Habitacion" />
                 </Columns>
             </asp:GridView>
         </td>

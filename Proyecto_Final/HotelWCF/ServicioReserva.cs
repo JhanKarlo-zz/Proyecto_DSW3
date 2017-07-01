@@ -37,6 +37,37 @@ namespace HotelWCF
             return retorno;
         }
 
+        public ReservaBE DevuelveReservaIdAuxiliar(short idAuxiliar)
+        {
+            ReservaBE objReservaBE = null;
+            try
+            {
+                Reserva reserva = (from o in MiHotel.Reserva
+                             where o.id_Reserva_Aux == idAuxiliar
+                             select o).FirstOrDefault();
+                if (reserva!=null)
+                {
+                    objReservaBE = new ReservaBE();
+                    objReservaBE.IdReserva = reserva.id_Reserva;
+                    objReservaBE.IdCliente = reserva.id_Cliente;
+                    objReservaBE.IdEstadoReserva = reserva.id_Estado_Reserva;
+                    objReservaBE.IdHabitacion = reserva.id_Habitacion;
+                    objReservaBE.FechaIngreso = reserva.Fecha_Ingreso;
+                    objReservaBE.FechaSalida = reserva.Fecha_Salida;
+                    objReservaBE.FechaInicioReserva = reserva.Fecha_Inicio_Reserva;
+                    objReservaBE.FechaFinReserva = reserva.Fecha_Fin_Reserva;
+                    objReservaBE.FechaRegistro = reserva.Fecha_Registro;
+                    objReservaBE.DescripcionEstadoReserva = objReservaBE.DevuelveDescripcionEstado(objReservaBE.IdEstadoReserva);
+                }
+                return objReservaBE;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<ReservaBE> DevuelveReservasCliente(byte IdCliente)
         {
             List<ReservaBE> objListaReserva = new List<ReservaBE>();
@@ -82,6 +113,12 @@ namespace HotelWCF
                 reserva.Fecha_Inicio_Reserva = objReserva.FechaInicioReserva;
                 reserva.Fecha_Fin_Reserva = objReserva.FechaFinReserva;
                 reserva.Fecha_Registro = objReserva.FechaRegistro;
+                reserva.Agencia = objReserva.Agencia;
+                reserva.ApellidoPaterno = objReserva.ApellidoPaterno;
+                reserva.ApellidoMaterno = objReserva.ApellidoMaterno;
+                reserva.Nombres = objReserva.Nombres;
+                reserva.NroDocumentoCliente = objReserva.NroDocumento;
+                reserva.id_Reserva_Aux = objReserva.idReservaAuxiliar;
                 MiHotel.Reserva.Add(reserva);
                 MiHotel.SaveChanges();
                 retorno = true;

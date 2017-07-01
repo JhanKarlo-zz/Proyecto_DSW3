@@ -20,7 +20,7 @@ namespace TestEscritorio
         ServicioHabitacion objServicioHabitacion = new ServicioHabitacion();
         ServiciosUbigeo objServicioUbigeo = new ServiciosUbigeo();
         ServiciosReserva objServicioReserva = new ServiciosReserva();
-        private ClienteBE objClienteServBE;
+        ReservaBL objReservaBL = new ReservaBL();
         private Cliente objClienteT;
         public frmReserva()
         {
@@ -101,22 +101,27 @@ namespace TestEscritorio
             if (validar())
             {
                 //DB_test
-                ReservaBL objReservaBL = new ReservaBL();
                 Reserva objReserva = new Reserva();
                 objReserva.Fecha_Inicio_Reserva = dtpInicio.Value;
                 objReserva.Fecha_Fin_Reserva = dtpFin.Value;
                 objReserva.id_Cliente = objClienteT.id_Cliente;
                 objReserva.id_Estado_Reserva = 1;
                 objReserva.id_Habitacion = Convert.ToInt16(dgvDisponible.CurrentRow.Cells["IdHabitacion"].Value);
-                Boolean retornoTest = objReservaBL.InsertarReserva(objReserva);
+                short retornoTest = objReservaBL.InsertarReserva(objReserva);
                 ReservaBE objReservaBE = new ReservaBE();
                 objReservaBE.FechaInicioReserva = dtpInicio.Value;
                 objReservaBE.FechaFinReserva = dtpFin.Value;
                 objReservaBE.IdCliente = 807;
                 objReservaBE.IdEstadoReserva = 1;
                 objReservaBE.IdHabitacion = Convert.ToInt16(dgvDisponible.CurrentRow.Cells["IdHabitacion"].Value);
+                objReservaBE.Agencia = true;
+                objReservaBE.ApellidoPaterno = objClienteT.Apellido_Paterno;
+                objReservaBE.ApellidoMaterno = objClienteT.Apellido_Materno;
+                objReservaBE.Nombres = objClienteT.Nombres;
+                objReservaBE.NroDocumento = objClienteT.NroDocumento;
+                objReservaBE.idReservaAuxiliar = retornoTest;
                 Boolean retornoServicio = objServicioReserva.InsertarReserva(objReservaBE);
-                if (retornoTest || retornoServicio)
+                if (retornoTest!=0 || retornoServicio)
                 {
                     MessageBox.Show("Se grabó con exito la reserva");
                     BuscarHabitacionLibre();
@@ -128,6 +133,22 @@ namespace TestEscritorio
                 {
                     MessageBox.Show("Error al registrar reserva");
                 }
+            }
+        }
+
+        private void dgvDisponible_SelectionChanged(object sender, EventArgs e)
+        {
+            HabitacionBE objHabitacionBE = new HabitacionBE();
+            int idHabitacion = Convert.ToInt16(dgvDisponible.CurrentRow.Cells["IdHabitacion"].Value);
+            if (idHabitacion!=0)
+            {
+                objHabitacionBE = objServicioHabitacion.DevuelveHabitacion(idHabitacion);
+                TimeSpan dias = dtpFin.Value.Date - dtpInicio.Value.Date;
+                lblTotal.Text = (objHabitacionBE.Precio * dias.Days).ToString("####0.00");
+            }
+            else
+            {
+                lblTotal.Text = "0.00";
             }
         }
     }

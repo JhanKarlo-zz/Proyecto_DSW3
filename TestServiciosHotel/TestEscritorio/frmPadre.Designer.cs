@@ -66,6 +66,7 @@
             this.pagoDeReservaToolStripMenuItem.Name = "pagoDeReservaToolStripMenuItem";
             this.pagoDeReservaToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.pagoDeReservaToolStripMenuItem.Text = "Pago de Reserva";
+            this.pagoDeReservaToolStripMenuItem.Click += new System.EventHandler(this.pagoDeReservaToolStripMenuItem_Click);
             // 
             // frmPadre
             // 

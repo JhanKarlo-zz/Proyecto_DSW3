@@ -43,4 +43,34 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="DevuelveReservaIdAuxiliar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idAuxiliar" type="xs:short" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DevuelveReservaIdAuxiliarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HotelWCF" minOccurs="0" name="DevuelveReservaIdAuxiliarResult" nillable="true" type="q4:ReservaBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarReservaFechaEstado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FechaInicio" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="FechaFinal" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="idEstadoReserva" nillable="true" type="xs:unsignedByte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarReservaFechaEstadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HotelWCF" minOccurs="0" name="ListarReservaFechaEstadoResult" nillable="true" type="q5:ArrayOfReservaBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

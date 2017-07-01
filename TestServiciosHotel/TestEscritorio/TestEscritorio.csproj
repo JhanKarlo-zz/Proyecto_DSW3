@@ -90,6 +90,12 @@
     <Compile Include="frmReserva.Designer.cs">
       <DependentUpon>frmReserva.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReservaPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReservaPago.Designer.cs">
+      <DependentUpon>frmReservaPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reserva.cs">
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReserva.resx">
       <DependentUpon>frmReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReservaPago.resx">
+      <DependentUpon>frmReservaPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -23,6 +23,18 @@ namespace CapaAccesoServicios.ProxyReserva {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool AgenciaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApellidoMaternoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApellidoPaternoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionEstadoReservaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime FechaFinReservaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -49,6 +61,18 @@ namespace CapaAccesoServicios.ProxyReserva {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private short IdReservaField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreClienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombresField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NroDocumentoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short idReservaAuxiliarField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -56,6 +80,58 @@ namespace CapaAccesoServicios.ProxyReserva {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Agencia {
+            get {
+                return this.AgenciaField;
+            }
+            set {
+                if ((this.AgenciaField.Equals(value) != true)) {
+                    this.AgenciaField = value;
+                    this.RaisePropertyChanged("Agencia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApellidoMaterno {
+            get {
+                return this.ApellidoMaternoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApellidoMaternoField, value) != true)) {
+                    this.ApellidoMaternoField = value;
+                    this.RaisePropertyChanged("ApellidoMaterno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApellidoPaterno {
+            get {
+                return this.ApellidoPaternoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApellidoPaternoField, value) != true)) {
+                    this.ApellidoPaternoField = value;
+                    this.RaisePropertyChanged("ApellidoPaterno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DescripcionEstadoReserva {
+            get {
+                return this.DescripcionEstadoReservaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionEstadoReservaField, value) != true)) {
+                    this.DescripcionEstadoReservaField = value;
+                    this.RaisePropertyChanged("DescripcionEstadoReserva");
+                }
             }
         }
         
@@ -176,6 +252,58 @@ namespace CapaAccesoServicios.ProxyReserva {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NombreCliente {
+            get {
+                return this.NombreClienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreClienteField, value) != true)) {
+                    this.NombreClienteField = value;
+                    this.RaisePropertyChanged("NombreCliente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombres {
+            get {
+                return this.NombresField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombresField, value) != true)) {
+                    this.NombresField = value;
+                    this.RaisePropertyChanged("Nombres");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NroDocumento {
+            get {
+                return this.NroDocumentoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NroDocumentoField, value) != true)) {
+                    this.NroDocumentoField = value;
+                    this.RaisePropertyChanged("NroDocumento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short idReservaAuxiliar {
+            get {
+                return this.idReservaAuxiliarField;
+            }
+            set {
+                if ((this.idReservaAuxiliarField.Equals(value) != true)) {
+                    this.idReservaAuxiliarField = value;
+                    this.RaisePropertyChanged("idReservaAuxiliar");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -207,6 +335,18 @@ namespace CapaAccesoServicios.ProxyReserva {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioReserva/DevuelveReservasCliente", ReplyAction="http://tempuri.org/IServicioReserva/DevuelveReservasClienteResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyReserva.ReservaBE>> DevuelveReservasClienteAsync(byte IdCliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioReserva/DevuelveReservaIdAuxiliar", ReplyAction="http://tempuri.org/IServicioReserva/DevuelveReservaIdAuxiliarResponse")]
+        CapaAccesoServicios.ProxyReserva.ReservaBE DevuelveReservaIdAuxiliar(short idAuxiliar);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioReserva/DevuelveReservaIdAuxiliar", ReplyAction="http://tempuri.org/IServicioReserva/DevuelveReservaIdAuxiliarResponse")]
+        System.Threading.Tasks.Task<CapaAccesoServicios.ProxyReserva.ReservaBE> DevuelveReservaIdAuxiliarAsync(short idAuxiliar);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioReserva/ListarReservaFechaEstado", ReplyAction="http://tempuri.org/IServicioReserva/ListarReservaFechaEstadoResponse")]
+        System.Collections.Generic.List<CapaAccesoServicios.ProxyReserva.ReservaBE> ListarReservaFechaEstado(System.DateTime FechaInicio, System.DateTime FechaFinal, System.Nullable<byte> idEstadoReserva);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioReserva/ListarReservaFechaEstado", ReplyAction="http://tempuri.org/IServicioReserva/ListarReservaFechaEstadoResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyReserva.ReservaBE>> ListarReservaFechaEstadoAsync(System.DateTime FechaInicio, System.DateTime FechaFinal, System.Nullable<byte> idEstadoReserva);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -258,6 +398,22 @@ namespace CapaAccesoServicios.ProxyReserva {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyReserva.ReservaBE>> DevuelveReservasClienteAsync(byte IdCliente) {
             return base.Channel.DevuelveReservasClienteAsync(IdCliente);
+        }
+        
+        public CapaAccesoServicios.ProxyReserva.ReservaBE DevuelveReservaIdAuxiliar(short idAuxiliar) {
+            return base.Channel.DevuelveReservaIdAuxiliar(idAuxiliar);
+        }
+        
+        public System.Threading.Tasks.Task<CapaAccesoServicios.ProxyReserva.ReservaBE> DevuelveReservaIdAuxiliarAsync(short idAuxiliar) {
+            return base.Channel.DevuelveReservaIdAuxiliarAsync(idAuxiliar);
+        }
+        
+        public System.Collections.Generic.List<CapaAccesoServicios.ProxyReserva.ReservaBE> ListarReservaFechaEstado(System.DateTime FechaInicio, System.DateTime FechaFinal, System.Nullable<byte> idEstadoReserva) {
+            return base.Channel.ListarReservaFechaEstado(FechaInicio, FechaFinal, idEstadoReserva);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<CapaAccesoServicios.ProxyReserva.ReservaBE>> ListarReservaFechaEstadoAsync(System.DateTime FechaInicio, System.DateTime FechaFinal, System.Nullable<byte> idEstadoReserva) {
+            return base.Channel.ListarReservaFechaEstadoAsync(FechaInicio, FechaFinal, idEstadoReserva);
         }
     }
 }

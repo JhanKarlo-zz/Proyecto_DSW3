@@ -89,7 +89,6 @@ namespace TestEscritorio
                     objClienteT = objClienteBL.DevuelveClienteDNI(txtNroDocumento.Text);
                     if (objClienteT == null)
                     {
-                        MessageBox.Show("Cliente no existe, porfavor llenar los datos");
                         txtNombres.Enabled = true;
                         txtMaterno.Enabled = true;
                         txtPaterno.Enabled = true;
@@ -161,7 +160,6 @@ namespace TestEscritorio
             }
             if (retorno == true)
             {
-                MessageBox.Show("Exito al grabar");
                 this.Close();
             }
         }

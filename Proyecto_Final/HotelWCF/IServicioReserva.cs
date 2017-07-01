@@ -22,6 +22,9 @@ namespace HotelWCF
         List<ReservaBE> DevuelveReservasCliente(byte IdCliente);
 
         [OperationContract]
+        ReservaBE DevuelveReservaIdAuxiliar(short idAuxiliar);
+
+        [OperationContract]
         List<ReservaBE> ListarReservaFechaEstado(DateTime FechaInicio,DateTime FechaFinal, byte? idEstadoReserva);
     }
     [DataContract]
@@ -50,6 +53,20 @@ namespace HotelWCF
         public DateTime? FechaSalida { get; set; }
         [DataMember]
         public DateTime? FechaIngreso { get; set; }
+        [DataMember]
+        public Boolean Agencia { get; set; }
+        [DataMember]
+        public string ApellidoPaterno { get; set; }
+        [DataMember]
+        public string ApellidoMaterno { get; set; }
+        [DataMember]
+        public string Nombres { get; set; }
+        [DataMember]
+        public string NroDocumento { get; set; }
+        [DataMember]
+        public short idReservaAuxiliar { get; set; }
+
+
 
         public string DevuelveDescripcionEstado(byte _idEstado)
         {

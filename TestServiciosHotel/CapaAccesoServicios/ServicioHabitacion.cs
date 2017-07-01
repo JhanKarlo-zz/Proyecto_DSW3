@@ -25,5 +25,9 @@ namespace CapaAccesoServicios
         {
             return objServicioHabitacion.ListarSede();
         }
+        public ProxyHabitacion.HabitacionBE DevuelveHabitacion(int idHabitacion)
+        {
+            return objServicioHabitacion.DevuelveHabitacion(idHabitacion);
+        }
     }
 }

@@ -21,5 +21,9 @@ namespace CapaAccesoServicios
         {
             return objServicioReserva.DevuelveReservasCliente(IdCliente);
         }
+        public ProxyReserva.ReservaBE DevuelveReservaIdAuxiliar(short idAux)
+        {
+            return objServicioReserva.DevuelveReservaIdAuxiliar(idAux);
+        }
     }
 }
